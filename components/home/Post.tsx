@@ -17,10 +17,7 @@ const Post: React.FC<Props> = ({ post }) => {
             <Image source={{ uri: post.image }} style={styles.image} />
             <View style={styles.userContainer}>
                 <Image source={{ uri: post.user.profile }} style={styles.userImage} />
-                <View style={styles.userTextContainer}>
-                    <Text style={styles.username}>{post.user.username}</Text>
-                    <Text style={styles.createdAt}>{post.createdAt}</Text>
-                </View>
+                <Text style={styles.username}>{post.user.username}</Text>
             </View>
         </View>
     )
@@ -33,32 +30,31 @@ const styles = StyleSheet.create({
         flex: 1,
         marginHorizontal: 5,
         padding: 5,
-        paddingTop: 10,
-        borderRadius: 10,
+        borderRadius: 15,
     },
     image: {
         width: "100%",
         aspectRatio: 1,
-        borderRadius: 10,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
     },
     userContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 5,
+        gap: 10,
+        padding: 10,
+        marginTop: 5,
     },
     userImage: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
+        width: 35,
+        height: 35,
+        borderRadius: 30,
     },
-    userTextContainer: {
-        paddingLeft: 10,
-    },
+
     username: {
         fontWeight: 'bold',
+        fontSize: 18,
     },
-    createdAt: {
-        color: 'gray',
-    }
+
 
 })
