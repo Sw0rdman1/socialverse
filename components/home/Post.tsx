@@ -42,18 +42,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10,
-        padding: 10,
+        padding: 5,
         marginTop: 5,
     },
     userImage: {
-        width: 35,
-        height: 35,
+        width: 40,
+        height: 40,
         borderRadius: 30,
     },
 
     username: {
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 16,
     },
 
 
