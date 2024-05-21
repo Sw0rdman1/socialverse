@@ -1,24 +1,35 @@
 import PostEntity from '@/model/Post'
-import { StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
 import { Text, View } from '../ui/Themed'
 import Image from '../ui/Image'
-import { useColorScheme } from '@/components/useColorScheme';
-import Colors from '@/constants/Colors';
+import LikeButton from './LikeButton'
 
 interface Props {
     post: PostEntity
 }
 
-const Post: React.FC<Props> = ({ post }) => {
+const { width } = Dimensions.get('window')
 
+const Post: React.FC<Props> = ({ post }) => {
+    const date = new Date(post.createdAt)
+    post.createdAt = date.toDateString()
 
     return (
         <View style={styles.container}>
             <Image source={{ uri: post.image }} style={styles.image} />
             <View style={styles.userContainer}>
-                <Image source={{ uri: post.user.profile }} style={styles.userImage} />
-                <Text style={styles.username}>{post.user.username}</Text>
+                <View style={styles.bottonContainer}>
+                    <Image source={{ uri: post.user.profile }} style={styles.userImage} />
+                    <View style={styles.usernameTimeContainer}>
+                        <Text style={styles.username}>{post.user.username}</Text>
+                        <Text style={styles.createdAt}>{post.createdAt}</Text>
+                    </View>
+                </View>
+                <LikeButton likes={post.likes} />
+
             </View>
+            <Text style={styles.caption}>{post.caption}</Text>
+
         </View>
     )
 }
@@ -28,32 +39,54 @@ export default Post
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginHorizontal: 5,
+        alignItems: 'center',
+        width: width - 20,
+        margin: 5,
         padding: 5,
         borderRadius: 15,
     },
     image: {
-        width: "100%",
-        aspectRatio: 1,
+        width: '100%',
+        height: 425,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
     },
     userContainer: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
         gap: 10,
         padding: 5,
         marginTop: 5,
     },
+    bottonContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10,
+    },
     userImage: {
-        width: 40,
-        height: 40,
+        width: 45,
+        height: 45,
         borderRadius: 30,
     },
-
+    usernameTimeContainer: {
+        flexDirection: 'column',
+        gap: 5,
+    },
     username: {
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: 20,
+    },
+    createdAt: {
+        color: 'gray',
+        fontSize: 12,
+    },
+    caption: {
+        fontSize: 19,
+        fontWeight: '500',
+        padding: 10,
+        alignSelf: 'flex-start',
     },
 
 
