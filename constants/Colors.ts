@@ -2,8 +2,8 @@ const tintColor = '#007BFF';
 
 export default {
   light: {
-    background: '#F5F5F5',
-    backroundSecondary: '#FFFFFF',
+    background: '#FFFFFF',
+    backroundSecondary: '#F5F5F5',
     text: '#333333',
     tint: tintColor,
     tabIconDefault: '#ccc',
