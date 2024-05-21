@@ -5,7 +5,7 @@ import { Tabs } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
-import { HeaderLeft } from '@/components/home/Header';
+import { HeaderLeft, HeaderRight } from '@/components/home/Header';
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof Entypo>['name'];
@@ -27,8 +27,12 @@ export default function TabLayout() {
         name="index"
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          headerStyle: {
+            height: 120,
+          },
           headerTitle: () => null,
           headerLeft: () => <HeaderLeft />,
+          headerRight: () => <HeaderRight />,
         }}
       />
       <Tabs.Screen
