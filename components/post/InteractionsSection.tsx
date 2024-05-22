@@ -1,18 +1,21 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import { Text, View } from '../ui/Themed'
 import Post from '@/model/Post'
+import { useState } from 'react'
 
 interface Props {
     post: Post
 }
 
 const InteractionsSection: React.FC<Props> = ({ post }) => {
+    const [isLiked, setIsLiked] = useState(false)
+
     return (
         <View style={styles.container}>
-            <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.buttonContainer}>
                 <Text>{post.likes}</Text>
 
-            </View>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -25,9 +28,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         padding: 10,
-        borderTopWidth: 1,
-        borderBottomWidth: 1,
-        borderColor: 'lightgrey',
     },
     buttonContainer: {
         flexDirection: 'row',

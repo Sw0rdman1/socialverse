@@ -1,6 +1,4 @@
 import AuthorInfo from '@/components/post/AuthorInfo';
-import InteractionsSection from '@/components/post/InteractionsSection';
-import Avatar from '@/components/ui/Avatar';
 import BackButton from '@/components/ui/BackButton';
 import Image from '@/components/ui/Image';
 import { ScrollView, Text, View } from '@/components/ui/Themed';
@@ -8,8 +6,7 @@ import { usePost } from '@/hooks/usePosts';
 import { useLocalSearchParams } from 'expo-router';
 import { Dimensions, StyleSheet } from 'react-native';
 
-const { width } = Dimensions.get('window')
-const height = width * 1.5;
+const { width, height } = Dimensions.get('window');
 
 const PostScreen = () => {
     const { postID } = useLocalSearchParams<{ postID: string }>();
@@ -35,10 +32,7 @@ const PostScreen = () => {
                 bounces={false}
                 showsVerticalScrollIndicator={false}
             >
-                <Image source={{ uri: post.image }} style={{ width, height }} />
-                <View style={styles.borderRadiusEffect} />
-                <InteractionsSection post={post} />
-
+                <Image source={{ uri: post.image }} style={styles.container} />
             </ScrollView>
         </>
 
@@ -50,24 +44,7 @@ export default PostScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        width: width,
+        height: height,
     },
-    borderRadiusEffect: {
-        height: 60,
-        width: '100%',
-        position: 'absolute',
-        top: height - 20,
-        borderTopRightRadius: 30,
-    },
-    captionContainer: {
-        paddingHorizontal: 20,
-        flexDirection: 'row',
-        alignItems: 'center',
-        width: '100%',
-        gap: 10,
-    },
-    caption: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    }
-
 })
