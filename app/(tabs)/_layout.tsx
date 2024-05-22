@@ -43,8 +43,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="[post]/index"
+        name="[postID]/index"
         options={{
+          headerShown: false,
           href: null,
         }}
       />

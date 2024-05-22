@@ -1,6 +1,5 @@
 import { FlatList, RefreshControl, StyleSheet, View } from 'react-native'
 import Post from './Post'
-import { useCallback, useState } from 'react'
 import { useColors } from '@/hooks/useColors'
 import { usePosts } from '@/hooks/usePosts'
 

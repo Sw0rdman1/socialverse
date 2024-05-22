@@ -9,7 +9,7 @@ const user: User = {
     profilePicture: 'https://jmrmolshsmmyxcivsxxv.supabase.co/storage/v1/object/sign/avatars/WhatsApp%20Image%202024-02-07%20at%2000.19.24.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhdmF0YXJzL1doYXRzQXBwIEltYWdlIDIwMjQtMDItMDcgYXQgMDAuMTkuMjQuanBlZyIsImlhdCI6MTcxNjA1Nzg3NSwiZXhwIjoxNzQ3NTkzODc1fQ.Y65iuGQe9k9ViPuvr40NKa3_i2FKniNGVSLsz3_4RSE&t=2024-05-18T18%3A44%3A35.973Z'
 }
 
-const post: Post = {
+const post1: Post = {
     id: '1',
     author: user,
     createdAt: '2021-08-01T12:00:00',
@@ -25,13 +25,13 @@ export const usePosts = () => {
     const [posts, setPosts] = useState<Post[]>([])
 
     useEffect(() => {
-        setPosts([post])
+        setPosts([post1])
     }, [])
 
     const onRefresh = () => {
         setLoading(true)
         setTimeout(() => {
-            setPosts((prev) => [post, ...prev])
+            setPosts((prev) => [post1, ...prev])
             setLoading(false)
         }, 2000)
     }
@@ -39,4 +39,16 @@ export const usePosts = () => {
 
     return { loading, posts, onRefresh }
 
+}
+
+export const usePost = (id: string) => {
+    const [loading, setLoading] = useState(true)
+    const [post, setPost] = useState<Post | null>(null)
+
+    useEffect(() => {
+        setPost(post1)
+        setLoading(false)
+    }, [])
+
+    return { loading, post }
 }
