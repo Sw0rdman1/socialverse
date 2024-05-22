@@ -1,8 +1,9 @@
 import PostEntity from '@/model/Post'
-import { Dimensions, StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import { Text, View } from '../ui/Themed'
 import Image from '../ui/Image'
 import LikeButton from './LikeButton'
+import { Link } from 'expo-router'
 
 interface Props {
     post: PostEntity
@@ -16,7 +17,11 @@ const Post: React.FC<Props> = ({ post }) => {
 
     return (
         <View style={styles.container}>
-            <Image source={{ uri: post.image }} style={styles.image} />
+            <Link href={`/post/${post.id}`} asChild>
+                <TouchableOpacity style={styles.image} >
+                    <Image source={{ uri: post.image }} style={styles.image} />
+                </TouchableOpacity>
+            </Link>
             <View style={styles.userContainer}>
                 <View style={styles.bottonContainer}>
                     <Image source={{ uri: post.author.profilePicture }} style={styles.userImage} />
