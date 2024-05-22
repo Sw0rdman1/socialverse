@@ -17,7 +17,7 @@ const Post: React.FC<Props> = ({ post }) => {
 
     return (
         <View style={styles.container}>
-            <Link href={`/post/${post.id}`} asChild>
+            <Link href={`${post.id}`} asChild>
                 <TouchableOpacity style={styles.image} >
                     <Image source={{ uri: post.image }} style={styles.image} />
                 </TouchableOpacity>
