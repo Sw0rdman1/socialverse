@@ -1,3 +1,4 @@
+import AuthorInfo from '@/components/post/AuthorInfo';
 import BackButton from '@/components/ui/BackButton';
 import Image from '@/components/ui/Image';
 import { ScrollView, Text, View } from '@/components/ui/Themed';
@@ -25,6 +26,7 @@ const PostScreen = () => {
     return (
         <>
             <BackButton />
+            <AuthorInfo user={post.author} />
             <ScrollView
                 style={styles.container}
                 contentContainerStyle={{ alignItems: 'center' }}

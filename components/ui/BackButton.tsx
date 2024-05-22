@@ -22,13 +22,13 @@ export default BackButton
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        top: 55,
+        top: 60,
         left: 20,
         zIndex: 100,
     },
     circle: {
-        width: 35,
-        height: 35,
+        width: 40,
+        height: 40,
         borderRadius: 20,
         justifyContent: 'center',
         alignItems: 'center',
