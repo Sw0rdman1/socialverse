@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { Text, View } from '../ui/Themed'
+import { useColors } from '@/hooks/useColors'
 
 interface Props {
     likes: number
@@ -9,6 +10,7 @@ interface Props {
 
 const LikeButton: React.FC<Props> = ({ likes }) => {
     const [liked, setLiked] = useState(false)
+    const { text } = useColors()
 
     const handleLike = () => {
         setLiked(!liked)
@@ -22,7 +24,7 @@ const LikeButton: React.FC<Props> = ({ likes }) => {
                 <Ionicons
                     name={liked ? 'heart' : 'heart-outline'}
                     size={26}
-                    color={liked ? 'red' : 'black'}
+                    color={liked ? 'red' : text}
                 />
             </TouchableOpacity>
         </View>

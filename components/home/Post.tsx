@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
         width: '100%',
         gap: 10,
         padding: 5,
+        paddingBottom: 10,
         marginTop: 5,
     },
     bottonContainer: {

@@ -1,13 +1,13 @@
-import { FlatList, RefreshControl, StyleSheet, useColorScheme } from 'react-native'
+import { FlatList, RefreshControl, StyleSheet } from 'react-native'
 import { View } from '../ui/Themed'
 import Post from './Post'
 import { useCallback, useState } from 'react'
-import Colors from '@/constants/Colors'
+import { useColors } from '@/hooks/useColors'
 
 const PostList = () => {
     const [loading, setLoading] = useState(false)
-    const colorScheme = useColorScheme();
-    const color = Colors[colorScheme ?? 'light'].tint
+    const { tint } = useColors()
+
 
     const onRefresh = useCallback(() => {
         setLoading(true);
@@ -68,7 +68,7 @@ const PostList = () => {
                 )}
                 style={{ width: '100%' }}
                 refreshControl={
-                    <RefreshControl tintColor={color} refreshing={loading} onRefresh={onRefresh} />
+                    <RefreshControl tintColor={tint} refreshing={loading} onRefresh={onRefresh} />
                 }
             />
         </View>

@@ -2,14 +2,12 @@ import { StyleSheet, View } from 'react-native'
 import { Text } from '../ui/Themed'
 import Image from '../ui/Image'
 import { Entypo } from '@expo/vector-icons'
-import { useColorScheme } from '@/components/useColorScheme';
-import Colors from '@/constants/Colors';
+import { useColors } from '@/hooks/useColors';
 
 const LOGO = '../../assets/images/logo.png'
 
 const HeaderLeft = () => {
-    const colorScheme = useColorScheme();
-    const color = Colors[colorScheme ?? 'light'].tint
+    const { tint } = useColors()
 
     return (
         <View style={styles.containerLeft}>
@@ -17,18 +15,18 @@ const HeaderLeft = () => {
                 source={require(LOGO)}
                 style={{ width: 40, height: 40 }}
             />
-            <Text style={[styles.title, { color }]}>SocialVerse</Text>
+            <Text style={[styles.title, { color: tint }]}>SocialVerse</Text>
         </View>
     )
 }
 
 const HeaderRight = () => {
-    const colorScheme = useColorScheme();
-    const color = Colors[colorScheme ?? 'light'].tint
+    const { tint } = useColors()
+
 
     return (
         <View style={styles.containerRight}>
-            <Entypo name="chat" size={26} color={color} />
+            <Entypo name="chat" size={26} color={tint} />
         </View>
     )
 }
