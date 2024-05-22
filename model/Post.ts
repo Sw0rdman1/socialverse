@@ -1,14 +1,12 @@
+import { User } from "./User";
+
 export default interface Post {
-    id: number;
-    user: {
-        id: number;
-        username: string;
-        profile: string;
-    };
+    id: string;
+    author: User
+    createdAt: string;
     image: string;
     caption: string;
     likes: number;
     comments: number;
     saves: number;
-    createdAt: string;
 }
