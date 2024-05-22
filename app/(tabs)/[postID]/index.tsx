@@ -1,4 +1,6 @@
 import AuthorInfo from '@/components/post/AuthorInfo';
+import InteractionsSection from '@/components/post/InteractionsSection';
+import Avatar from '@/components/ui/Avatar';
 import BackButton from '@/components/ui/BackButton';
 import Image from '@/components/ui/Image';
 import { ScrollView, Text, View } from '@/components/ui/Themed';
@@ -35,7 +37,8 @@ const PostScreen = () => {
             >
                 <Image source={{ uri: post.image }} style={{ width, height }} />
                 <View style={styles.borderRadiusEffect} />
-                <View style={{ height: 400 }} />
+                <InteractionsSection post={post} />
+
             </ScrollView>
         </>
 
@@ -52,9 +55,19 @@ const styles = StyleSheet.create({
         height: 60,
         width: '100%',
         position: 'absolute',
-        top: height - 40,
-        borderTopLeftRadius: 30,
+        top: height - 20,
         borderTopRightRadius: 30,
+    },
+    captionContainer: {
+        paddingHorizontal: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        gap: 10,
+    },
+    caption: {
+        fontSize: 20,
+        fontWeight: 'bold',
     }
 
 })
