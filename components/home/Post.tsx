@@ -19,9 +19,9 @@ const Post: React.FC<Props> = ({ post }) => {
             <Image source={{ uri: post.image }} style={styles.image} />
             <View style={styles.userContainer}>
                 <View style={styles.bottonContainer}>
-                    <Image source={{ uri: post.user.profile }} style={styles.userImage} />
+                    <Image source={{ uri: post.author.profilePicture }} style={styles.userImage} />
                     <View style={styles.usernameTimeContainer}>
-                        <Text style={styles.username}>{post.user.username}</Text>
+                        <Text style={styles.username}>{post.author.displayName}</Text>
                         <Text style={styles.createdAt}>{post.createdAt}</Text>
                     </View>
                 </View>

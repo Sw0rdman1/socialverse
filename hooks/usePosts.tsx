@@ -25,7 +25,7 @@ export const usePosts = () => {
     const [posts, setPosts] = useState<Post[]>([])
 
     useEffect(() => {
-        setPosts(new Array(20).fill(post))
+        setPosts([post])
     }, [])
 
     const onRefresh = () => {

@@ -6,9 +6,7 @@ import { usePosts } from '@/hooks/usePosts'
 
 const PostList = () => {
     const { tint } = useColors()
-
     const { loading, posts, onRefresh } = usePosts()
-
 
     return (
         <View style={styles.container}>
