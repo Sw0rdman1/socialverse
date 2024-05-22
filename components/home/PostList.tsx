@@ -1,5 +1,4 @@
-import { FlatList, RefreshControl, StyleSheet } from 'react-native'
-import { View } from '../ui/Themed'
+import { FlatList, RefreshControl, StyleSheet, View } from 'react-native'
 import Post from './Post'
 import { useCallback, useState } from 'react'
 import { useColors } from '@/hooks/useColors'
@@ -70,6 +69,7 @@ const PostList = () => {
                 refreshControl={
                     <RefreshControl tintColor={tint} refreshing={loading} onRefresh={onRefresh} />
                 }
+                ListFooterComponent={<View style={{ height: 20 }} />}
             />
         </View>
     )
@@ -81,6 +81,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: 'transparent',
     },
 })
