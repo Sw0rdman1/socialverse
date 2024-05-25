@@ -1,4 +1,5 @@
 import AuthorInfo from '@/components/post/AuthorInfo';
+import InteractionsSection from '@/components/post/InteractionsSection';
 import BackButton from '@/components/ui/BackButton';
 import Image from '@/components/ui/Image';
 import { ScrollView, Text, View } from '@/components/ui/Themed';
@@ -26,6 +27,7 @@ const PostScreen = () => {
         <>
             <BackButton />
             <AuthorInfo user={post.author} />
+            <InteractionsSection post={post} />
             <ScrollView
                 style={styles.container}
                 contentContainerStyle={{ alignItems: 'center' }}
@@ -46,5 +48,8 @@ const styles = StyleSheet.create({
         flex: 1,
         width: width,
         height: height,
+        position: 'absolute',
+        top: 0,
+        left: 0,
     },
 })
