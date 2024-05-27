@@ -11,19 +11,23 @@ interface Props {
 
 const InteractionsSection: React.FC<Props> = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false)
-    const { text, background } = useColors()
+    const { text, background, backroundSecondary } = useColors()
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => setIsLiked(!isLiked)} activeOpacity={0.4} style={[styles.iconContainer, { backgroundColor: background }]}>
-                <Ionicons
-                    name={isLiked ? 'heart' : 'heart-outline'}
-                    size={30}
-                    color={isLiked ? 'red' : text}
-                />
-            </TouchableOpacity>
-            <Text style={styles.text}>{post.likes}</Text>
+
+            <View style={[styles.buttonContainer, { backgroundColor: backroundSecondary }]}>
+                <TouchableOpacity onPress={() => setIsLiked(!isLiked)} activeOpacity={0.4} >
+                    <Ionicons
+                        name={isLiked ? 'heart' : 'heart-outline'}
+                        size={30}
+                        color={isLiked ? 'red' : text}
+                    />
+                </TouchableOpacity>
+                <Text style={styles.text}>{post.likes}</Text>
+            </View>
         </View>
+
     )
 }
 
@@ -31,18 +35,21 @@ export default InteractionsSection
 
 const styles = StyleSheet.create({
     container: {
-        position: 'absolute',
-        right: 20,
-        top: 200,
-        zIndex: 100,
-        flexDirection: 'column',
+        flex: 1,
+        width: '100%',
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    buttonContainer: {
+        flex: 1,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         gap: 5,
-    },
-    iconContainer: {
         padding: 10,
-        borderRadius: 50,
+        borderRadius: 10,
     },
     text: {
         fontSize: 18,
