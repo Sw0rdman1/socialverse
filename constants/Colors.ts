@@ -1,4 +1,7 @@
 const tintColor = '#007BFF';
+const tintTransparent = '#007BFF80';
+const likeColor = "#ff0033"
+const likeColorTransparent = "#ff003360"
 
 export default {
   light: {
@@ -6,6 +9,9 @@ export default {
     backroundSecondary: '#F5F5F5',
     text: '#333333',
     tint: tintColor,
+    tintTransparent: tintTransparent,
+    likeColor: likeColor,
+    likeColorTransparent: likeColorTransparent,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColor,
   },
@@ -14,6 +20,9 @@ export default {
     backroundSecondary: '#000000',
     text: '#D3D3D3',
     tint: tintColor,
+    tintTransparent: tintTransparent,
+    likeColor: likeColor,
+    likeColorTransparent: likeColorTransparent,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColor,
   },
