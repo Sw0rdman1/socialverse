@@ -1,5 +1,6 @@
 import AuthorInfo from '@/components/post/AuthorInfo';
 import InteractionsSection from '@/components/post/InteractionsSection';
+import PostHeader from '@/components/post/PostHeader';
 import AnimatedHeader from '@/components/ui/AnimatedHeader';
 import BackButton from '@/components/ui/BackButton';
 import Image from '@/components/ui/Image';
@@ -15,7 +16,6 @@ const PostScreen = () => {
     const { post, loading } = usePost(postID as string);
 
     if (loading) {
-        console.log('Loading...');
         return <Text>Loading...</Text>
     }
 
@@ -26,12 +26,12 @@ const PostScreen = () => {
 
     return (
         <AnimatedHeader
-            headerComponent={<Image source={post.image} style={styles.container} />}
+            headerComponent={<PostHeader post={post} />}
             minHeight={200}
             maxHeight={height - 200}
         >
             <InteractionsSection post={post} />
-            <View style={{ height: 1000 }} />
+            <View style={{ height: 300 }} />
         </AnimatedHeader>
 
     )
@@ -39,10 +39,3 @@ const PostScreen = () => {
 
 export default PostScreen
 
-const styles = StyleSheet.create({
-    container: {
-        width: "100%",
-        height: "100%",
-        borderBottomRightRadius: 30,
-    },
-})
