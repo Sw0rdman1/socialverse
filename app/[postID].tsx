@@ -30,7 +30,7 @@ const PostScreen = () => {
         >
             <Caption post={post} />
             <InteractionsSection post={post} />
-            <View style={{ height: 500 }} />
+            <View style={{ height: 300 }} />
         </AnimatedHeader>
 
     )

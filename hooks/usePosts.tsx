@@ -14,7 +14,7 @@ const post1: Post = {
     author: user,
     createdAt: '2021-08-01T12:00:00',
     image: 'https://www.serbia.travel/files/1-Kalemegdan%20%2C%20Beograd%20%2C%20Leto%20%2C%20Pobednik%20%2C%20Shutterstock%20(2)-0-1280x768.jpg',
-    caption: 'This is a test caption',
+    caption: 'This is a test caption #test #caption',
     likes: 56,
     comments: 5,
     saves: 3,

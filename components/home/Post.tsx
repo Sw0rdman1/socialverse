@@ -4,6 +4,7 @@ import { Text, View } from '../ui/Themed'
 import Image from '../ui/Image'
 import LikeButton from './LikeButton'
 import { Link } from 'expo-router'
+import HashtagText from '../ui/HashtagText'
 
 interface Props {
     post: PostEntity
@@ -33,7 +34,7 @@ const Post: React.FC<Props> = ({ post }) => {
                 <LikeButton likes={post.likes} />
 
             </View>
-            <Text style={styles.caption}>{post.caption}</Text>
+            <HashtagText style={styles.caption}>{post.caption}</HashtagText>
 
         </View>
     )

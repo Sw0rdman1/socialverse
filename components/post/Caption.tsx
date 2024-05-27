@@ -2,21 +2,25 @@ import { StyleSheet } from 'react-native'
 import { Text, View } from '../ui/Themed'
 import Post from '@/model/Post'
 import Avatar from '../ui/Avatar'
+import { useColors } from '@/hooks/useColors'
+import HashtagText from '../ui/HashtagText'
 
 interface Props {
     post: Post
 }
 
 const Caption: React.FC<Props> = ({ post }) => {
+    const { tint } = useColors()
+
     return (
         <View style={styles.container}>
             <View style={styles.user}>
                 <Avatar url={post.author.profilePicture} size={30} />
                 <Text style={styles.username}>{post.author.displayName}</Text>
             </View>
-            <Text style={styles.caption}> - "{post.caption}"</Text>
+            <HashtagText style={styles.caption}>{post.caption}</HashtagText>
         </View>
-    )
+    );
 }
 
 export default Caption
