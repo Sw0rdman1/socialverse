@@ -23,7 +23,6 @@ const HeaderLeft = () => {
 const HeaderRight = () => {
     const { tint } = useColors()
 
-
     return (
         <View style={styles.containerRight}>
             <Entypo name="chat" size={26} color={tint} />
