@@ -14,7 +14,7 @@ const AnimatedHeader: React.FC<ScrollViewScreenProps> = ({ children, headerCompo
     const scrollOffsetY = useRef(new Animated.Value(0)).current;
     const Scroll_Distance = maxHeight - minHeight;
 
-    const animatedPaddingTop = scrollOffsetY.interpolate({
+    const animatedHeight = scrollOffsetY.interpolate({
         inputRange: [0, Scroll_Distance],
         outputRange: [0, Scroll_Distance],
         extrapolate: "clamp",
@@ -43,7 +43,7 @@ const AnimatedHeader: React.FC<ScrollViewScreenProps> = ({ children, headerCompo
                     }
                 )}
             >
-                <Animated.View style={{ height: animatedPaddingTop }} />
+                <Animated.View style={{ height: animatedHeight }} />
                 {children}
             </ScrollView>
         </View>

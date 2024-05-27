@@ -25,12 +25,12 @@ const PostScreen = () => {
     return (
         <AnimatedHeader
             headerComponent={<PostHeader post={post} />}
-            minHeight={200}
+            minHeight={350}
             maxHeight={height - 200}
         >
             <Caption post={post} />
             <InteractionsSection post={post} />
-            <View style={{ height: 300 }} />
+            <View style={{ height: 700 }} />
         </AnimatedHeader>
 
     )
