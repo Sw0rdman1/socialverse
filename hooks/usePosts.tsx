@@ -31,7 +31,8 @@ export const usePosts = () => {
     const onRefresh = () => {
         setLoading(true)
         setTimeout(() => {
-            setPosts((prev) => [post1, ...prev])
+            const newPost = { ...post1, id: String(posts.length + 1) }
+            setPosts((prev) => [newPost, ...prev])
             setLoading(false)
         }, 2000)
     }

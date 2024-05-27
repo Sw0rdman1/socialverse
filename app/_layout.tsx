@@ -44,7 +44,7 @@ function RootLayoutNav() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="[postID]" options={{ headerShown: false, animation: "slide_from_bottom" }} />
+        <Stack.Screen name="[postID]" options={{ gestureEnabled: false, headerShown: false, animation: "slide_from_bottom" }} />
       </Stack>
     </ThemeProvider>
   );
