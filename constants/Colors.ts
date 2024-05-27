@@ -1,7 +1,7 @@
 const tintColor = '#007BFF';
-const tintTransparent = '#007BFF80';
+const tintTransparent = '#007BFF40';
 const likeColor = "#ff0033"
-const likeColorTransparent = "#ff003360"
+const likeColorTransparent = "#ff003340"
 
 export default {
   light: {

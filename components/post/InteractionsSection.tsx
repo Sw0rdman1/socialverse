@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         gap: 15,
         paddingHorizontal: 20,
         height: 60,
-        marginTop: 10,
+        marginTop: 20,
         paddingTop: 5,
     },
     interactionContainer: {
