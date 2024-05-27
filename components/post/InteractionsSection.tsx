@@ -107,9 +107,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         gap: 15,
-        paddingHorizontal: 20,
+        paddingHorizontal: 15,
         height: 60,
-        marginTop: 20,
+        marginTop: 10,
         paddingTop: 5,
     },
     interactionContainer: {

@@ -1,3 +1,4 @@
+import Caption from '@/components/post/Caption';
 import InteractionsSection from '@/components/post/InteractionsSection';
 import PostHeader from '@/components/post/PostHeader';
 import AnimatedHeader from '@/components/ui/AnimatedHeader';
@@ -27,6 +28,7 @@ const PostScreen = () => {
             minHeight={200}
             maxHeight={height - 200}
         >
+            <Caption post={post} />
             <InteractionsSection post={post} />
             <View style={{ height: 500 }} />
         </AnimatedHeader>
