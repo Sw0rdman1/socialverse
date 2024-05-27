@@ -20,7 +20,7 @@ const InteractionSection: React.FC<InteractionSectionProps> = ({ post }) => {
     const [isBookmarked, setIsBookmarked] = useState(false);
     const [numberOfBookmarks, setNumberOfBookmarks] = useState(post.saves);
 
-    const { tint, backroundSecondary, text, tintTransparent, likeColor, likeColorTransparent } = useColors();
+    const { tint, backgroundSecondary, text, tintTransparent, likeColor, likeColorTransparent } = useColors();
 
 
     const handleLike = async () => {
@@ -72,7 +72,7 @@ const InteractionSection: React.FC<InteractionSectionProps> = ({ post }) => {
                 onPress={handleLike}
                 style={[styles.interactionContainer,
                 {
-                    backgroundColor: isLiked ? likeColorTransparent : backroundSecondary,
+                    backgroundColor: isLiked ? likeColorTransparent : backgroundSecondary,
 
                 }]}
             >
@@ -86,7 +86,7 @@ const InteractionSection: React.FC<InteractionSectionProps> = ({ post }) => {
             <TouchableOpacity
                 onPress={handleBookmark}
                 style={[styles.interactionContainer, {
-                    backgroundColor: isBookmarked ? tintTransparent : backroundSecondary
+                    backgroundColor: isBookmarked ? tintTransparent : backgroundSecondary
                 }]}
             >
                 <Text style={[styles.interactionText, { color: text }]}>{numberOfBookmarks}</Text>

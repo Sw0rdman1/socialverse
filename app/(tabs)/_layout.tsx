@@ -6,6 +6,7 @@ import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { HeaderLeft, HeaderRight } from '@/components/home/Header';
+import { useColors } from '@/hooks/useColors';
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof Entypo>['name'];
@@ -15,12 +16,12 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const { tint } = useColors();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: tint,
         headerShown: useClientOnlyValue(false, true),
       }}>
       <Tabs.Screen
