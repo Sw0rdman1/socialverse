@@ -2,7 +2,7 @@ import Post from "@/model/Post";
 import { User } from "@/model/User";
 import { useEffect, useState } from "react";
 
-const user: User = {
+const user1: User = {
     id: '1',
     email: 'vujasinovicb2019@gmail.com',
     displayName: 'vujasinovicb',
@@ -11,7 +11,7 @@ const user: User = {
 
 const post1: Post = {
     id: '1',
-    author: user,
+    author: user1,
     createdAt: '2021-08-01T12:00:00',
     imageUrl: 'https://www.serbia.travel/files/1-Kalemegdan%20%2C%20Beograd%20%2C%20Leto%20%2C%20Pobednik%20%2C%20Shutterstock%20(2)-0-1280x768.jpg',
     caption: 'This is a test caption #test #caption',
@@ -28,7 +28,7 @@ export const useUser = (id: string) => {
 
 
     useEffect(() => {
-        setUser(user)
+        setUser(user1)
         setUsersPosts([post1])
         setLoading(false)
     }, [])

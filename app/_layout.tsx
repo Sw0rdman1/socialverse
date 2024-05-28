@@ -46,8 +46,8 @@ function RootLayoutNav() {
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="[postID]" options={{ gestureEnabled: false, headerShown: false, animation: "slide_from_bottom" }} />
-          <Stack.Screen name="[userID]" options={{ gestureEnabled: false, headerShown: false, animation: "fade_from_bottom" }} />
+          <Stack.Screen name="post/[postID]" options={{ gestureEnabled: false, headerShown: false, animation: "slide_from_bottom" }} />
+          <Stack.Screen name="user/[userID]" options={{ gestureEnabled: false, headerShown: false, animation: "fade_from_bottom" }} />
         </Stack>
       </ThemeProvider>
     </AppProvider>

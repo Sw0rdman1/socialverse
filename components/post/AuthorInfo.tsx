@@ -1,7 +1,8 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import { Text, View } from '../ui/Themed'
 import { User } from '@/model/User'
 import Avatar from '../ui/Avatar'
+import { Link } from 'expo-router'
 
 interface Props {
     user: User
@@ -9,10 +10,12 @@ interface Props {
 
 const AuthorInfo: React.FC<Props> = ({ user }) => {
     return (
-        <View style={styles.container}>
-            <Avatar url={user.profilePicture} size={40} />
-            <Text style={styles.displayName}>{user.displayName}</Text>
-        </View>
+        <Link href={`user/${user.id}`} asChild>
+            <TouchableOpacity activeOpacity={0.6} style={styles.container}>
+                <Avatar url={user.profilePicture} size={40} />
+                <Text style={styles.displayName}>{user.displayName}</Text>
+            </TouchableOpacity>
+        </Link>
     )
 }
 
