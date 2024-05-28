@@ -27,8 +27,8 @@ const UserProfileScreen = () => {
     return (
         <AnimatedHeader
             headerComponent={<UserProfileHeader user={user} />}
-            minHeight={350}
-            maxHeight={height - 200}
+            minHeight={250}
+            maxHeight={height - 300}
         >
             <View style={{ height: 700 }} />
         </AnimatedHeader>
