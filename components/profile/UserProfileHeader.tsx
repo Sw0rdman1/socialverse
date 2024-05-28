@@ -3,6 +3,7 @@ import { View } from '../ui/Themed'
 import Image from '../ui/Image'
 import BackButton from '../ui/BackButton'
 import { User } from '@/model/User'
+import UserProfileInformations from './UserProfileInformations'
 
 interface Props {
     user: User
@@ -11,8 +12,10 @@ interface Props {
 const UserProfileHeader: React.FC<Props> = ({ user }) => {
     return (
         <View>
-            <Image source={user.profilePicture} style={styles.image} />
             <BackButton />
+            <View style={styles.imageOverlay} />
+            <Image source={user.profilePicture} style={styles.image} />
+            <UserProfileInformations user={user} />
         </View>
     )
 }
@@ -24,5 +27,11 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         borderBottomRightRadius: 30,
+    },
+    imageOverlay: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: "rgba(0,0,0,0.4)",
+        borderBottomRightRadius: 30,
+        zIndex: 10,
     }
 })
