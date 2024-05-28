@@ -11,7 +11,7 @@ interface FollowButtonProps {
 }
 
 const FollowButton: React.FC<FollowButtonProps> = ({ isFollowing, setIsFollowing, user }) => {
-    const { text, background, backgroundSecondary, tintTransparent, tint } = useColors();
+    const { text, backgroundSecondary, tintTransparent, tint } = useColors();
 
     const handleFollow = () => {
         setIsFollowing(!isFollowing)
@@ -21,8 +21,7 @@ const FollowButton: React.FC<FollowButtonProps> = ({ isFollowing, setIsFollowing
         <View style={{ flex: 1 }}>
             <TouchableOpacity
                 style={[styles.button, {
-                    backgroundColor: isFollowing ? background : backgroundSecondary,
-                    borderColor: tintTransparent
+                    backgroundColor: backgroundSecondary,
                 }]}
                 onPress={handleFollow}
             >
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 15,
         gap: 15,
         height: 50,
-        marginTop: 10,
+        marginTop: 5,
     },
     button: {
         flex: 1,
@@ -97,8 +96,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10,
         borderRadius: 20,
-        backgroundColor: 'white',
-        borderWidth: 1,
     },
 
     buttonText: {

@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 25,
         gap: 25,
         height: 80,
-        marginVertical: 30,
+        marginVertical: 20,
     },
     item: {
         paddingVertical: 15,
