@@ -1,12 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import GlobalController from "./GlobalController";
 import { snakeToCamel } from "../utils/caseConverter";
-import { ImagePickerAsset } from "expo-image-picker";
-import * as FileSystem from 'expo-file-system';
-import { decode } from 'base64-arraybuffer';
 import Post from "@/model/Post";
-
-const EXPIRES_IN = 365 * 24 * 60 * 60;
 
 export class PostController {
 

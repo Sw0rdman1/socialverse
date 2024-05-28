@@ -1,5 +1,4 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import { Post } from "../models/Post";
 
 export class BookamarkController {
 

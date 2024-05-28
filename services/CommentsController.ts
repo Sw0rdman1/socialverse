@@ -1,11 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import { Post } from "../models/Post";
-import GlobalController from "./GlobalController";
 import { snakeToCamel } from "../utils/caseConverter";
-import { ImagePickerAsset } from "expo-image-picker";
-import * as FileSystem from 'expo-file-system';
-import { decode } from 'base64-arraybuffer';
-import Comment from "../models/Comment";
+import Comment from "@/model/Comment";
 
 
 export class CommentController {
