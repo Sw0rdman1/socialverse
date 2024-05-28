@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native'
 import { Text, View } from '../ui/Themed'
 import Post from '@/model/Post'
 import Avatar from '../ui/Avatar'
-import { useColors } from '@/hooks/useColors'
 import HashtagText from '../ui/HashtagText'
 
 interface Props {
@@ -10,8 +9,6 @@ interface Props {
 }
 
 const Caption: React.FC<Props> = ({ post }) => {
-    const { tint } = useColors()
-
     return (
         <View style={styles.container}>
             <View style={styles.user}>

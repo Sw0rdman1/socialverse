@@ -15,10 +15,10 @@ interface InteractionSectionProps {
 
 const InteractionSection: React.FC<InteractionSectionProps> = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false);
-    const [numberOfLikes, setNumberOfLikes] = useState(post.likes);
+    const [numberOfLikes, setNumberOfLikes] = useState(post.numberOfLikes);
 
     const [isBookmarked, setIsBookmarked] = useState(false);
-    const [numberOfBookmarks, setNumberOfBookmarks] = useState(post.saves);
+    const [numberOfBookmarks, setNumberOfBookmarks] = useState(post.numberOfBookmarks);
 
     const { tint, backgroundSecondary, text, tintTransparent, likeColor, likeColorTransparent } = useColors();
 

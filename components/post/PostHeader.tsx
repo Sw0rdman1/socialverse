@@ -12,7 +12,7 @@ interface Props {
 const PostHeader: React.FC<Props> = ({ post }) => {
     return (
         <View >
-            <Image source={post.image} style={styles.image} />
+            <Image source={post.imageUrl} style={styles.image} />
             <BackButton />
             <AuthorInfo user={post.author} />
         </View>

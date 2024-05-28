@@ -20,7 +20,7 @@ const Post: React.FC<Props> = ({ post }) => {
         <View style={styles.container}>
             <Link href={`${post.id}`} asChild>
                 <TouchableOpacity style={styles.image} >
-                    <Image source={{ uri: post.image }} style={styles.image} />
+                    <Image source={{ uri: post.imageUrl }} style={styles.image} />
                 </TouchableOpacity>
             </Link>
             <View style={styles.userContainer}>
@@ -31,7 +31,7 @@ const Post: React.FC<Props> = ({ post }) => {
                         <Text style={styles.createdAt}>{post.createdAt}</Text>
                     </View>
                 </View>
-                <LikeButton likes={post.likes} />
+                <LikeButton likes={post.numberOfLikes} />
 
             </View>
             <HashtagText style={styles.caption}>{post.caption}</HashtagText>
