@@ -59,8 +59,8 @@ class LargeSecureStore {
     }
 }
 
-const supabaseUrl = process.env.EXPO_PUBLIC_API_URL as string;
-const supabaseKey = process.env.EXPO_PUBLIC_API_KEY as string;
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_API_URL as string;
+const supabaseKey = process.env.EXPO_PUBLIC_SUPABASE_API_KEY as string;
 
 export const supabase = createClient(supabaseUrl, supabaseKey, {
     auth: {

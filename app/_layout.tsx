@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { AppProvider } from '@/context/AppContext';
 
 export { ErrorBoundary, } from 'expo-router';
 
@@ -41,11 +42,13 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="[postID]" options={{ gestureEnabled: false, headerShown: false, animation: "slide_from_bottom" }} />
-      </Stack>
-    </ThemeProvider>
+    <AppProvider>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="[postID]" options={{ gestureEnabled: false, headerShown: false, animation: "slide_from_bottom" }} />
+        </Stack>
+      </ThemeProvider>
+    </AppProvider>
   );
 }

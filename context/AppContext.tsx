@@ -44,10 +44,18 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     );
 };
 
-export const useCurrentUser = (): CurrentUserProps => {
+export const useCurrentUser = () => {
     const context = useContext(AppContext);
     if (!context) {
         throw new Error('useAppContext must be used within a AppProvider');
     }
-    return { currentUser: context.currentUser };
+    return context.currentUser;
+};
+
+export const useApi = () => {
+    const context = useContext(AppContext);
+    if (!context) {
+        throw new Error('useAppContext must be used within a AppProvider');
+    }
+    return context.api;
 };
