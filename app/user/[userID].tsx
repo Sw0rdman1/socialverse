@@ -1,6 +1,7 @@
 import Caption from '@/components/post/Caption';
 import InteractionsSection from '@/components/post/InteractionsSection';
 import PostHeader from '@/components/post/PostHeader';
+import FollowerSection from '@/components/profile/FollowerSection';
 import UserProfileHeader from '@/components/profile/UserProfileHeader';
 import AnimatedHeader from '@/components/ui/AnimatedHeader';
 import { Text, View } from '@/components/ui/Themed';
@@ -30,6 +31,7 @@ const UserProfileScreen = () => {
             minHeight={250}
             maxHeight={height - 300}
         >
+            <FollowerSection user={user} isFollowing={false} />
             <View style={{ height: 700 }} />
         </AnimatedHeader>
 

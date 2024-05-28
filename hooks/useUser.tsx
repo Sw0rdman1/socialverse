@@ -6,7 +6,11 @@ const user1: User = {
     id: '1',
     email: 'vujasinovicb2019@gmail.com',
     displayName: 'vujasinovicb',
-    profilePicture: "https://wallpapers.com/images/hd/cool-profile-picture-minion-13pu7815v42uvrsg.jpg"
+    profilePicture: "https://wallpapers.com/images/hd/cool-profile-picture-minion-13pu7815v42uvrsg.jpg",
+    isFollowing: true,
+    numberOfFollowers: 615,
+    numberOfFollowing: 423,
+    numberOfPosts: 11
 }
 
 const post1: Post = {
