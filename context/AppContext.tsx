@@ -1,20 +1,19 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import GlobalController from '../services/GlobalController';
-
-
-interface PostResponse {
-    data: Post[];
-    total: number;
-
-}
+import { User } from '@/model/User';
 
 
 interface AppContextProps {
     api: GlobalController;
     currentUser: User;
-    initialPosts: PostResponse;
-    loading: boolean
-    refreshPosts: () => Promise<void>;
+}
+
+interface CurrentUserProps {
+    currentUser: User;
+}
+
+interface ApiProps {
+    api: GlobalController;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -26,52 +25,29 @@ interface AppProviderProps {
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     const api = GlobalController.getInstance();
     const [currentUser, setCurrentUser] = useState<User>({} as User);
-    const [initialPosts, setInitialPosts] = useState<PostResponse>({} as PostResponse);
-    const [loading, setLoading] = useState<boolean>(true);
-    const { user, initialized } = useAuth();
 
 
     useEffect(() => {
-        const fetchData = async () => {
-            if (!initialized) {
-                return;
-            }
+        setCurrentUser({
+            id: '1312412512',
+            displayName: 'Bozidar Vujasinovic',
+            email: 'vujasinovicb2019@gmail.com',
+            profilePicture: "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg"
+        });
 
-            if (!user) {
-                setLoading(false);
-                return;
-            }
-
-            const currentUser = await api.users.getCurrentUserInformations(user.id);
-            setCurrentUser(currentUser);
-            const posts = await api.posts.getPosts();
-            setInitialPosts(posts);
-            setTimeout(() => {
-                setLoading(false);
-            }, 1000);
-        };
-
-        fetchData();
-
-
-    }, [user, initialized]);
-
-    const refreshPosts = async () => {
-        const posts = await api.posts.getPosts();
-        setInitialPosts(posts);
-    };
+    }, []);
 
     return (
-        <AppContext.Provider value={{ api, currentUser, initialPosts, loading, refreshPosts }}>
+        <AppContext.Provider value={{ api, currentUser }}>
             {children}
         </AppContext.Provider>
     );
 };
 
-export const useAppContext = (): AppContextProps => {
+export const useCurrentUser = (): CurrentUserProps => {
     const context = useContext(AppContext);
     if (!context) {
         throw new Error('useAppContext must be used within a AppProvider');
     }
-    return context;
+    return { currentUser: context.currentUser };
 };
