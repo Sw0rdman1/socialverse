@@ -2,12 +2,14 @@ import Caption from '@/components/post/Caption';
 import InteractionsSection from '@/components/post/InteractionsSection';
 import PostHeader from '@/components/post/PostHeader';
 import FollowerSection from '@/components/profile/FollowerSection';
+import UserButtons from '@/components/profile/UserButtons';
 import UserProfileHeader from '@/components/profile/UserProfileHeader';
 import AnimatedHeader from '@/components/ui/AnimatedHeader';
 import { Text, View } from '@/components/ui/Themed';
 import { usePost } from '@/hooks/usePosts';
 import { useUser } from '@/hooks/useUser';
 import { useLocalSearchParams } from 'expo-router';
+import { useState } from 'react';
 import { Dimensions } from 'react-native';
 
 const { height } = Dimensions.get('window');
@@ -15,6 +17,7 @@ const { height } = Dimensions.get('window');
 const UserProfileScreen = () => {
     const { userID } = useLocalSearchParams<{ userID: string }>();
     const { user, userPosts, loading } = useUser(userID as string);
+    const [isFollowing, setIsFollowing] = useState(user?.isFollowing || false)
 
     if (loading) {
         return <Text>Loading...</Text>
@@ -32,6 +35,7 @@ const UserProfileScreen = () => {
             maxHeight={height - 300}
         >
             <FollowerSection user={user} isFollowing={false} />
+            <UserButtons user={user} isFollowing={isFollowing} setIsFollowing={setIsFollowing} />
             <View style={{ height: 700 }} />
         </AnimatedHeader>
 
