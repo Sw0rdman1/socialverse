@@ -11,7 +11,7 @@ const NumberContainer: React.FC<{ number: number, label: string, isFollowing: bo
     const textColor = isFollowing ? tint : text;
 
     return (
-        <View style={[styles.item, { shadowColor: text, backgroundColor: isFollowing ? tintTransparent : backgroundSecondary }]}>
+        <View style={[styles.item, { backgroundColor: isFollowing ? tintTransparent : backgroundSecondary }]}>
             <Text style={[styles.label, { color: textColor }]}>{label}</Text>
             <Text style={[styles.count, { color: textColor }]}>{number}</Text>
         </View>
@@ -58,10 +58,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 5,
         borderRadius: 15,
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        elevation: 5,
     },
     label: {
         fontSize: 16,

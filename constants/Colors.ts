@@ -5,8 +5,8 @@ const likeColorTransparent = "#ff003340"
 
 export default {
   light: {
-    background: '#FFFFFF',
-    backgroundSecondary: '#F5F5F5',
+    background: '#F2F2F7',
+    backgroundSecondary: '#FFFFFF',
     text: '#333333',
     tint: tintColor,
     tintTransparent: tintTransparent,
@@ -17,7 +17,7 @@ export default {
   },
   dark: {
     background: '#000000',
-    backgroundSecondary: '#1E1E1E',
+    backgroundSecondary: '#121212',
     text: '#D3D3D3',
     tint: tintColor,
     tintTransparent: tintTransparent,

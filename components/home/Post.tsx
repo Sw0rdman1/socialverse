@@ -1,10 +1,11 @@
 import PostEntity from '@/model/Post'
-import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
-import { Text, View } from '../ui/Themed'
+import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Text } from '../ui/Themed'
 import Image from '../ui/Image'
 import LikeButton from './LikeButton'
 import { Link } from 'expo-router'
 import HashtagText from '../ui/HashtagText'
+import { useColors } from '@/hooks/useColors'
 
 interface Props {
     post: PostEntity
@@ -14,10 +15,12 @@ const { width } = Dimensions.get('window')
 
 const Post: React.FC<Props> = ({ post }) => {
     const date = new Date(post.createdAt)
+    const { backgroundSecondary } = useColors()
     post.createdAt = date.toDateString()
 
+
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: backgroundSecondary }]}>
             <Link href={`post/${post.id}`} asChild>
                 <TouchableOpacity style={styles.image} >
                     <Image source={{ uri: post.imageUrl }} style={styles.image} />

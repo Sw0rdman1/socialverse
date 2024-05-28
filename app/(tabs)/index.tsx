@@ -7,10 +7,10 @@ import { useColorScheme } from '@/components/useColorScheme';
 import { useColors } from '@/hooks/useColors';
 
 export default function HomeScreen() {
-  const { backgroundSecondary } = useColors();
+  const { background } = useColors();
 
   return (
-    <View style={[styles.container, { backgroundColor: backgroundSecondary }]}>
+    <View style={[styles.container, { backgroundColor: background }]}>
       <PostList />
     </View>
   );
