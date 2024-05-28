@@ -1,6 +1,8 @@
-import { User } from '@/model/User'
 import { StyleSheet } from 'react-native'
-import { Text, View } from '../ui/Themed'
+import { View } from '../ui/Themed'
+import Image from '../ui/Image'
+import BackButton from '../ui/BackButton'
+import { User } from '@/model/User'
 
 interface Props {
     user: User
@@ -9,11 +11,18 @@ interface Props {
 const UserProfileHeader: React.FC<Props> = ({ user }) => {
     return (
         <View>
-            <Text>UserProfileHeader</Text>
+            <Image source={user.profilePicture} style={styles.image} />
+            <BackButton />
         </View>
     )
 }
 
 export default UserProfileHeader
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    image: {
+        width: "100%",
+        height: "100%",
+        borderBottomRightRadius: 30,
+    }
+})

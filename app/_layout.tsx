@@ -47,7 +47,7 @@ function RootLayoutNav() {
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="post/[postID]" options={{ gestureEnabled: false, headerShown: false, animation: "slide_from_bottom" }} />
-          <Stack.Screen name="user/[userID]" options={{ gestureEnabled: false, headerShown: false, animation: "fade_from_bottom" }} />
+          <Stack.Screen name="user/[userID]" options={{ gestureEnabled: false, headerShown: false, animation: "slide_from_right" }} />
         </Stack>
       </ThemeProvider>
     </AppProvider>

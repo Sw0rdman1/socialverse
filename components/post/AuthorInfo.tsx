@@ -1,21 +1,25 @@
-import { StyleSheet, TouchableOpacity } from 'react-native'
-import { Text, View } from '../ui/Themed'
+import { StyleSheet } from 'react-native'
+import { Text, TouchableOpacity } from '../ui/Themed'
 import { User } from '@/model/User'
 import Avatar from '../ui/Avatar'
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 
 interface Props {
     user: User
 }
 
 const AuthorInfo: React.FC<Props> = ({ user }) => {
+    const router = useRouter();
+
+    const handlePress = () => {
+        router.push(`/user/${user.id}`)
+    }
+
     return (
-        <Link href={`user/${user.id}`} asChild>
-            <TouchableOpacity activeOpacity={0.6} style={styles.container}>
-                <Avatar url={user.profilePicture} size={40} />
-                <Text style={styles.displayName}>{user.displayName}</Text>
-            </TouchableOpacity>
-        </Link>
+        <TouchableOpacity onPress={handlePress} style={styles.container}>
+            <Avatar url={user.profilePicture} size={40} />
+            <Text style={styles.displayName}>{user.displayName}</Text>
+        </TouchableOpacity>
     )
 }
 

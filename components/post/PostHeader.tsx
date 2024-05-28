@@ -4,6 +4,7 @@ import Image from '../ui/Image'
 import Post from '@/model/Post'
 import BackButton from '../ui/BackButton'
 import AuthorInfo from './AuthorInfo'
+import { Link } from 'expo-router'
 
 interface Props {
     post: Post
@@ -11,9 +12,10 @@ interface Props {
 
 const PostHeader: React.FC<Props> = ({ post }) => {
     return (
-        <View >
+        <View>
             <Image source={post.imageUrl} style={styles.image} />
             <BackButton />
+
             <AuthorInfo user={post.author} />
         </View>
     )
