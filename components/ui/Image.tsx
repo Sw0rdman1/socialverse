@@ -9,8 +9,6 @@ const Image = (props: ImageProps) => {
     return (
         <DefaultImage
             placeholder={blurhash}
-            contentFit="cover"
-            transition={1000}
             {...props}
         />
     );

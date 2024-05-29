@@ -1,13 +1,9 @@
-import Caption from '@/components/post/Caption';
-import InteractionsSection from '@/components/post/InteractionsSection';
-import PostHeader from '@/components/post/PostHeader';
 import FollowerSection from '@/components/profile/FollowerSection';
-import NotFollowingFeed from '@/components/profile/NotFollowingFeed';
 import UserButtons from '@/components/profile/UserButtons';
+import UserFeed from '@/components/profile/UserFeed';
 import UserProfileHeader from '@/components/profile/UserProfileHeader';
 import AnimatedHeader from '@/components/ui/AnimatedHeader';
 import { Text, View } from '@/components/ui/Themed';
-import { usePost } from '@/hooks/usePosts';
 import { useUser } from '@/hooks/useUser';
 import { useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
@@ -38,7 +34,7 @@ const UserProfileScreen = () => {
             <View style={{ flex: 1, height: isFollowing ? "auto" : 300 }}>
                 <FollowerSection user={user} isFollowing={false} />
                 <UserButtons user={user} isFollowing={isFollowing} setIsFollowing={setIsFollowing} />
-                {!isFollowing && <NotFollowingFeed displayName={user.displayName} />}
+                <UserFeed user={user} isFollowing={isFollowing} posts={userPosts} />
             </View>
         </AnimatedHeader >
 

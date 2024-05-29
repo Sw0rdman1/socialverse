@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
         gap: 15,
         height: 50,
         marginTop: 5,
+        marginBottom: 25,
     },
     button: {
         flex: 1,
