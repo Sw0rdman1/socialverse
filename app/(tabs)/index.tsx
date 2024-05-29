@@ -1,10 +1,7 @@
-import { StyleSheet } from 'react-native';
-
-import { View } from '@/components/ui/Themed';
 import PostList from '@/components/home/PostList';
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
+import { View } from '@/components/ui/Themed';
 import { useColors } from '@/hooks/useColors';
+import { StyleSheet } from 'react-native';
 
 export default function HomeScreen() {
   const { background } = useColors();
