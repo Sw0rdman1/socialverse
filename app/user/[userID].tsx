@@ -2,6 +2,7 @@ import Caption from '@/components/post/Caption';
 import InteractionsSection from '@/components/post/InteractionsSection';
 import PostHeader from '@/components/post/PostHeader';
 import FollowerSection from '@/components/profile/FollowerSection';
+import NotFollowingFeed from '@/components/profile/NotFollowingFeed';
 import UserButtons from '@/components/profile/UserButtons';
 import UserProfileHeader from '@/components/profile/UserProfileHeader';
 import AnimatedHeader from '@/components/ui/AnimatedHeader';
@@ -34,10 +35,12 @@ const UserProfileScreen = () => {
             minHeight={250}
             maxHeight={height - 300}
         >
-            <FollowerSection user={user} isFollowing={false} />
-            <UserButtons user={user} isFollowing={isFollowing} setIsFollowing={setIsFollowing} />
-            <View style={{ height: 700 }} />
-        </AnimatedHeader>
+            <View style={{ flex: 1, height: isFollowing ? "auto" : 300 }}>
+                <FollowerSection user={user} isFollowing={false} />
+                <UserButtons user={user} isFollowing={isFollowing} setIsFollowing={setIsFollowing} />
+                {!isFollowing && <NotFollowingFeed displayName={user.displayName} />}
+            </View>
+        </AnimatedHeader >
 
     )
 }

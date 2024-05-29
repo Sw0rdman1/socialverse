@@ -37,7 +37,7 @@ const FollowButton: React.FC<FollowButtonProps> = ({ isFollowing, setIsFollowing
 }
 
 const WriteMessageButton = () => {
-    const { backgroundSecondary, tintTransparent, tint } = useColors();
+    const { backgroundSecondary, tintTransparent, tint, text } = useColors();
 
 
     return (
