@@ -2,7 +2,8 @@ import { StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FontAwesome } from '@expo/vector-icons';
 import { useColors } from '@/hooks/useColors';
-import { TextInput, View } from '../ui/Themed';
+import { TextInput, TouchableOpacity, View } from '../ui/Themed';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 interface SearchHeaderProps {
     searchTerm: string;
@@ -11,7 +12,11 @@ interface SearchHeaderProps {
 
 const SearchHeader: React.FC<SearchHeaderProps> = ({ searchTerm, setSearchTerm }) => {
     const { top } = useSafeAreaInsets();
-    const { tint, backgroundSecondary } = useColors();
+    const { tint, backgroundSecondary, text } = useColors();
+
+    const cancelHandler = () => {
+        setSearchTerm('');
+    }
 
     return (
         <View style={[styles.container, { backgroundColor: backgroundSecondary }]}>
@@ -23,6 +28,11 @@ const SearchHeader: React.FC<SearchHeaderProps> = ({ searchTerm, setSearchTerm }
                     onChangeText={setSearchTerm}
                 />
                 <FontAwesome style={styles.icon} name="search" size={21} color={tint} />
+                {searchTerm &&
+                    <TouchableOpacity onPress={cancelHandler} style={styles.cancelIcon}>
+                        <Ionicons name="close" size={22} color={text} />
+                    </TouchableOpacity>
+                }
             </View>
         </View>
     )
@@ -63,7 +73,11 @@ const styles = StyleSheet.create({
         left: 5,
         bottom: 0,
         marginBottom: 15,
-
+    },
+    cancelIcon: {
+        position: 'absolute',
+        right: 12,
+        top: 14,
     },
 
 })
