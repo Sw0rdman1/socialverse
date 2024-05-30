@@ -6,6 +6,7 @@ import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { HeaderLeft, HeaderRight } from '@/components/home/Header';
 import { useColors } from '@/hooks/useColors';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import SearchHeader from '@/components/search/SearchHeader';
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -41,6 +42,7 @@ export default function TabLayout() {
         options={{
           title: 'Search',
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
+          headerShown: false,
         }}
       />
 
