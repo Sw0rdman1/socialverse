@@ -36,7 +36,7 @@ const UserProfileScreen = () => {
                 <UserButtons user={user} isFollowing={isFollowing} setIsFollowing={setIsFollowing} />
                 <UserFeed user={user} isFollowing={isFollowing} posts={userPosts} />
             </View>
-        </AnimatedHeader >
+        </AnimatedHeader>
 
     )
 }

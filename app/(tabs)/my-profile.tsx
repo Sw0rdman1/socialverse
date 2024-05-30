@@ -1,13 +1,18 @@
-import { Text, View } from '@/components/ui/Themed'
+import FollowerSection from '@/components/profile/FollowerSection';
+import Image from '@/components/ui/Image'
+import { View } from '@/components/ui/Themed'
 import { useCurrentUser } from '@/context/AppContext'
-import { StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
+
+const { height, width } = Dimensions.get('window');
 
 const MyProfileScreen = () => {
     const currentUser = useCurrentUser()
 
     return (
         <View style={styles.container}>
-            <Text>My Profile</Text>
+            <Image source={currentUser?.profilePicture} style={styles.profileImage} />
+            <FollowerSection user={currentUser} isFollowing={false} />
         </View>
     )
 }
@@ -17,7 +22,11 @@ export default MyProfileScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
+    },
+    profileImage: {
+        width: width,
+        height: height / 3,
+        borderRadius: 20,
     },
 })
