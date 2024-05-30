@@ -37,6 +37,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingTop: 6,
         paddingBottom: 12,
+        position: 'absolute',
+        width: '100%',
+        zIndex: 100,
+        top: 0,
+        opacity: 0.9,
     },
     inputContainer: {
         flex: 1,
