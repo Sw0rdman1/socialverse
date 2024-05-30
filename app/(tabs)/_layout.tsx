@@ -1,18 +1,24 @@
 import React from 'react';
-import Entypo from '@expo/vector-icons/Entypo';
 import { Tabs } from 'expo-router';
 
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { HeaderLeft, HeaderRight } from '@/components/home/Header';
 import { useColors } from '@/hooks/useColors';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import SearchHeader from '@/components/search/SearchHeader';
+import { useCurrentUser } from '@/context/AppContext';
+import Avatar from '@/components/ui/Avatar';
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
+  myProfile?: boolean;
 }) {
-  return <FontAwesome size={24} style={{ marginBottom: -2 }} {...props} />;
+
+  const currentUser = useCurrentUser();
+  if (props.myProfile) {
+    return <Avatar size={26} url={currentUser.profilePicture} />;
+  }
+  return <FontAwesome size={24}  {...props} />;
 }
 
 export default function TabLayout() {
@@ -21,13 +27,13 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        tabBarShowLabel: false,
         tabBarActiveTintColor: tint,
         headerShown: useClientOnlyValue(false, true),
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerStyle: {
             height: 120,
@@ -40,8 +46,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="search"
         options={{
-          title: 'Search',
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="my-profile"
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="user-circle-o" color={color} myProfile />,
           headerShown: false,
         }}
       />
