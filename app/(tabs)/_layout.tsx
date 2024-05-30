@@ -16,7 +16,7 @@ function TabBarIcon(props: {
 
   const currentUser = useCurrentUser();
   if (props.myProfile) {
-    return <Avatar size={26} url={currentUser.profilePicture} />;
+    return <Avatar size={24} url={currentUser.profilePicture} />;
   }
   return <FontAwesome size={24}  {...props} />;
 }

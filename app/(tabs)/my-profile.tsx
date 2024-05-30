@@ -1,7 +1,10 @@
 import { Text, View } from '@/components/ui/Themed'
+import { useCurrentUser } from '@/context/AppContext'
 import { StyleSheet } from 'react-native'
 
 const MyProfileScreen = () => {
+    const currentUser = useCurrentUser()
+
     return (
         <View style={styles.container}>
             <Text>My Profile</Text>
