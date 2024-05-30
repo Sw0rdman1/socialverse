@@ -214,7 +214,6 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     width: '100%',
-    gap: 15,
   },
 
 });
