@@ -33,9 +33,11 @@ export default SearchResult
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        padding: 15,
+        padding: 10,
         alignItems: 'center',
-        marginBottom: 2,
+        marginBottom: 10,
+        borderRadius: 10,
+        marginHorizontal: 5,
     },
     textContainer: {
         marginLeft: 15,
