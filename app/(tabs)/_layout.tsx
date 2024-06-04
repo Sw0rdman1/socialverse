@@ -11,14 +11,16 @@ import Avatar from '@/components/ui/Avatar';
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
+  size?: number;
   myProfile?: boolean;
 }) {
-
   const currentUser = useCurrentUser();
+  const iconSize = props.size || 24;
+
   if (props.myProfile) {
-    return <Avatar size={24} url={currentUser.profilePicture} />;
+    return <Avatar size={22} url={currentUser.profilePicture} />;
   }
-  return <FontAwesome size={24}  {...props} />;
+  return <FontAwesome size={iconSize}  {...props} />;
 }
 
 export default function TabLayout() {
@@ -46,7 +48,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="search"
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon size={20} name="search" color={color} />,
           headerShown: false,
         }}
       />

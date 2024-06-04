@@ -19,7 +19,6 @@ const LikeButton: React.FC<Props> = ({ likes }) => {
     return (
         <View style={styles.likesContainer}>
             <Text style={styles.likesCount}>{likes}</Text>
-
             <TouchableOpacity onPress={handleLike}>
                 <Ionicons
                     name={liked ? 'heart' : 'heart-outline'}
@@ -39,6 +38,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 5,
         marginRight: 5,
+        backgroundColor: 'transparent',
     },
     likesCount: {
         fontSize: 20,
