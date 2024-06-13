@@ -11,7 +11,7 @@ export class LikeController {
 
     public async likePost(postId: number, userId: number): Promise<void> {
         try {
-            let { data: like, error } = await this.supabase
+            let { error } = await this.supabase
                 .from('likes')
                 .insert({ post_id: postId, user_id: userId });
 
