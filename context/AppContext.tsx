@@ -8,13 +8,6 @@ interface AppContextProps {
     currentUser: User;
 }
 
-interface CurrentUserProps {
-    currentUser: User;
-}
-
-interface ApiProps {
-    api: GlobalController;
-}
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
 

@@ -10,6 +10,45 @@ export class UserController {
         this.supabase = supabase;
     }
 
+    public async signUpWithEmailAndPassword(email: string, password: string, displayName: string, username: string): Promise<void> {
+        const {error} = await this.supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: { data: { full_name: displayName, username: username  } },
+        })
+
+        if (error) {
+            console.log(error.message);
+            throw error;
+        }
+
+    }
+
+    public async signInWithEmailAndPassword(email: string, password: string): Promise<void> {
+        const {error} = await this.supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        })
+
+        if (error) {
+            console.log(error.message);
+            throw error;
+        }
+
+    }
+
+    public async signOut(): Promise<void> {
+        const {error} = await this.supabase.auth.signOut();
+
+        if (error) {
+            console.log(error.message);
+            throw error;
+        }
+    }
+
+    
+
+
     public async getCurrentUserInformations(id: string): Promise<User> {
         const { data, error } = await this.supabase
             .from('users')
@@ -21,8 +60,6 @@ export class UserController {
             console.log(error.message);
             throw error;
         }
-
-
 
         return snakeToCamel(data) as User;
     }
