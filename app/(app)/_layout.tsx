@@ -1,12 +1,13 @@
 import React from 'react';
-import { Tabs } from 'expo-router';
+import { Redirect, Tabs } from 'expo-router';
 
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { HeaderLeft, HeaderRight } from '@/components/home/Header';
 import { useColors } from '@/hooks/useColors';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { useCurrentUser } from '@/context/AppContext';
+import { useAuth, useCurrentUser } from '@/context/AppContext';
 import Avatar from '@/components/ui/Avatar';
+import { Text } from '@/components/ui/Themed';
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -18,13 +19,22 @@ function TabBarIcon(props: {
   const iconSize = props.size || 24;
 
   if (props.myProfile) {
-    return <Avatar size={22} url={currentUser.profilePicture} />;
+    // return <Avatar size={22} url={currentUser?.profilePicture} />;
   }
   return <FontAwesome size={iconSize}  {...props} />;
 }
 
 export default function TabLayout() {
   const { tint } = useColors();
+  const { isLoading, session } = useAuth();
+
+  if (isLoading) {
+    return <Text>Loading...</Text>;
+  }
+
+  if (!session || !session.user) {
+    return <Redirect href="/auth" />;
+  }
 
   return (
     <Tabs
