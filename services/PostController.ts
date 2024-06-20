@@ -10,11 +10,11 @@ export class PostController {
         this.supabase = supabase;
     }
 
-    public async getPosts(page = 1, pageSize = 3): Promise<{ data: Post[], total: number }> {
+    public async getAllPosts(page = 1, pageSize = 3): Promise<{ data: Post[], total: number }> {
         try {
             let { data: posts, error } = await this.supabase
                 .from('posts')
-                .select('*, author:users(*)')
+                .select('*, author_id:users(*)')
                 .range((page - 1) * pageSize, page * pageSize - 1)
                 .order('created_at', { ascending: false });
 
@@ -43,6 +43,27 @@ export class PostController {
             return { data: [], total: 0 };
         }
 
+    }
+
+    public async getPostByID(id: string): Promise<Post | null> {
+        try {
+            let { data: posts, error } = await this.supabase
+                .from('posts')
+                .select('*, author:users(*)')
+                .eq('id', id)
+                .single();
+
+            if (error) {
+                console.log('Error fetching post:', error.message);
+                throw error;
+            }
+
+            return snakeToCamel(posts);
+
+        } catch (error) {
+            console.error('Error fetching post:', (error as Error).message);
+            return null;
+        }
     }
 
 
