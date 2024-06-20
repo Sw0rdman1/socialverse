@@ -12,7 +12,7 @@ const Caption: React.FC<Props> = ({ post }) => {
     return (
         <View style={styles.container}>
             <View style={styles.user}>
-                <Avatar url={post.author.profilePicture} size={30} />
+                <Avatar url={post.author.avatarUrl} size={30} />
                 <Text style={styles.username}>{post.author.fullName}</Text>
             </View>
             <HashtagText style={styles.caption}>{post.caption}</HashtagText>

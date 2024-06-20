@@ -16,7 +16,7 @@ const MyProfileScreen = () => {
     return (
         <View style={[styles.container, { backgroundColor: backgroundSecondary }]}>
             <LinearGradient colors={['transparent', 'transparent', backgroundSecondary]} style={styles.linearGradient} />
-            <Image source={currentUser?.profilePicture} style={styles.profileImage} />
+            <Image source={currentUser?.avatarUrl} style={styles.profileImage} />
             <View style={styles.nameContainer}>
                 <View style={styles.fullNameContainer}>
                     <FontAwesome5 name="hashtag" size={26} color={tint} />

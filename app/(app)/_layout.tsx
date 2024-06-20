@@ -19,7 +19,7 @@ function TabBarIcon(props: {
   const iconSize = props.size || 24;
 
   if (props.myProfile) {
-    // return <Avatar size={22} url={currentUser?.profilePicture} />;
+    // return <Avatar size={22} url={currentUser?.avatarUrl} />;
   }
   return <FontAwesome size={iconSize}  {...props} />;
 }

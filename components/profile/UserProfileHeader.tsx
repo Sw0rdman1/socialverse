@@ -14,7 +14,7 @@ const UserProfileHeader: React.FC<Props> = ({ user }) => {
         <View>
             <BackButton />
             <View style={styles.imageOverlay} />
-            <Image source={user.profilePicture} style={styles.image} />
+            <Image source={user.avatarUrl} style={styles.image} />
             <UserProfileInformations user={user} />
         </View>
     )
