@@ -21,7 +21,7 @@ const SearchResult: React.FC<SearchResultProps> = ({ user }) => {
         <TouchableOpacity onPress={handlePress} style={[styles.container, { backgroundColor: backgroundSecondary }]}>
             <Avatar url={user.profilePicture} size={60} />
             <View style={styles.textContainer}>
-                <Text style={styles.username}>{user.displayName}</Text>
+                <Text style={styles.username}>{user.fullName}</Text>
                 <Text style={styles.name}>{user.email}</Text>
             </View>
         </TouchableOpacity>

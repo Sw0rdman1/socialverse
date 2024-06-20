@@ -14,8 +14,8 @@ export class PostController {
         try {
             let { data: posts, error } = await this.supabase
                 .from('posts')
-                .select('*, author_id:users(*)')
-                .range((page - 1) * pageSize, page * pageSize - 1)
+                .select(`*,author:users!posts_author_id_fkey(*)`)                
+            .range((page - 1) * pageSize, page * pageSize - 1)
                 .order('created_at', { ascending: false });
 
 
@@ -25,6 +25,8 @@ export class PostController {
 
             if (error) {
                 console.log('Error fetching posts count:', error.message);
+                console.log(error);
+                
                 throw error;
             }
 
@@ -49,7 +51,7 @@ export class PostController {
         try {
             let { data: posts, error } = await this.supabase
                 .from('posts')
-                .select('*, author:users(*)')
+                .select(`*,author:users!posts_author_id_fkey(*)`)                
                 .eq('id', id)
                 .single();
 

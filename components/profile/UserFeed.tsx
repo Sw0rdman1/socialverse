@@ -10,7 +10,7 @@ import { Text } from '../ui/Themed';
 
 
 
-const NotFollowingFeed = ({ displayName }: { displayName: string }) => {
+const NotFollowingFeed = ({ fullName }: { fullName: string }) => {
 
     return (
         <Animated.View
@@ -19,7 +19,7 @@ const NotFollowingFeed = ({ displayName }: { displayName: string }) => {
             <View style={styles.notFollowingContainer}>
                 <Ionicons name="lock-closed" size={28} color={"gray"} />
                 <Text style={[styles.NotFollowingText, { color: "gray" }]}>
-                    This user is private. Follow to see {displayName} posts
+                    This user is private. Follow to see {fullName} posts
                 </Text>
             </View>
         </Animated.View>
@@ -37,7 +37,7 @@ const UserFeed: React.FC<UserFeedProps> = ({ user, isFollowing, posts }) => {
     const [isGrid, setIsGrid] = useState(true);
 
     if (!isFollowing) {
-        return <NotFollowingFeed displayName={user.displayName} />
+        return <NotFollowingFeed fullName={user.fullName} />
     }
 
 

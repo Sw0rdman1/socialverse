@@ -76,11 +76,11 @@ const PasswordInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
     )
 }
 
-const DisplayNameInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
+const fullNameInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
     const [error, setError] = useState<string | null>(null)
     const { tint } = useColors()
 
-    const validateDisplayName = () => {
+    const validatefullName = () => {
         if (value.length > 0 && value.length < 6) {
             setError('Display Name must be at least 6 characters')
         } else {
@@ -99,14 +99,14 @@ const DisplayNameInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
                     if (error) setError(null)
                     setValue(text)
                 }}
-                onBlur={validateDisplayName}
+                onBlur={validatefullName}
             />
             <Text style={styles.error}>{error}</Text>
         </View>
     )
 }
 
-export { EmailInput, PasswordInput, DisplayNameInput }
+export { EmailInput, PasswordInput, fullNameInput }
 
 const styles = StyleSheet.create({
     inputContainer: {

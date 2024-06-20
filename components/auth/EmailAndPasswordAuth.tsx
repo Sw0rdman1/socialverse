@@ -1,14 +1,14 @@
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { supabase } from '@/config/supabase'
-import { DisplayNameInput, EmailInput, PasswordInput } from './InputFields'
+import { fullNameInput, EmailInput, PasswordInput } from './InputFields'
 import { router } from 'expo-router'
 import { AppleAuth } from './AppleAuth'
 
 const RegisterForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [displayName, setDisplayName] = useState('')
+    const [fullName, setfullName] = useState('')
 
     async function signUpWithEmail() {
         const {
@@ -16,7 +16,7 @@ const RegisterForm = () => {
         } = await supabase.auth.signUp({
             email: email,
             password: password,
-            options: { data: { full_name: displayName } },
+            options: { data: { full_name: fullName } },
         })
 
         if (error) Alert.alert(error.message)
@@ -28,7 +28,7 @@ const RegisterForm = () => {
         <View style={styles.formContainer}>
             <EmailInput value={email} setValue={setEmail} />
             <PasswordInput value={password} setValue={setPassword} />
-            <DisplayNameInput value={displayName} setValue={setDisplayName} />
+            <fullNameInput value={fullName} setValue={setfullName} />
             {/* <Button text='Register' onPress={signUpWithEmail} /> */}
 
         </View>

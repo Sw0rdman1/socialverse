@@ -18,10 +18,10 @@ const MyProfileScreen = () => {
             <LinearGradient colors={['transparent', 'transparent', backgroundSecondary]} style={styles.linearGradient} />
             <Image source={currentUser?.profilePicture} style={styles.profileImage} />
             <View style={styles.nameContainer}>
-                <View style={styles.displayNameContainer}>
+                <View style={styles.fullNameContainer}>
                     <FontAwesome5 name="hashtag" size={26} color={tint} />
-                    <Text style={styles.displayName}>
-                        {currentUser?.displayName}
+                    <Text style={styles.fullName}>
+                        {currentUser?.fullName}
                     </Text>
                 </View>
                 <Text style={styles.email}>{currentUser?.email}</Text>
@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         backgroundColor: 'transparent',
     },
-    displayNameContainer: {
+    fullNameContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: 'transparent',
         gap: 5,
     },
-    displayName: {
+    fullName: {
         marginBottom: 5,
         fontSize: 32,
         fontWeight: '600',

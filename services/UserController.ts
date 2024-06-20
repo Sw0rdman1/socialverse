@@ -10,11 +10,11 @@ export class UserController {
         this.supabase = supabase;
     }
 
-    public async signUpWithEmailAndPassword(email: string, password: string, displayName: string, username: string): Promise<void> {
+    public async signUpWithEmailAndPassword(email: string, password: string, fullName: string, username: string): Promise<void> {
         const {error} = await this.supabase.auth.signUp({
             email: email,
             password: password,
-            options: { data: { full_name: displayName, username: username  } },
+            options: { data: { full_name: fullName, username: username  } },
         })
 
         if (error) {

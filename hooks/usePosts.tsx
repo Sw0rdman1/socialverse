@@ -14,6 +14,8 @@ export const usePosts = () => {
         const fetchPosts = async () => {
             setLoading(true)
             const posts = await postController.getAllPosts();
+            console.log(posts.data);
+
             setPosts(posts.data)
             setTotal(posts.total)
             setLoading(false)

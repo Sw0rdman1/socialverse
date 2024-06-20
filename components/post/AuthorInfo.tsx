@@ -17,8 +17,8 @@ const AuthorInfo: React.FC<Props> = ({ user }) => {
 
     return (
         <TouchableOpacity onPress={handlePress} style={styles.container}>
-            <Avatar url={user.profilePicture} size={40} />
-            <Text style={styles.displayName}>{user.displayName}</Text>
+            <Avatar url={user.avatarUrl} size={40} />
+            <Text style={styles.fullName}>{user.fullName}</Text>
         </TouchableOpacity>
     )
 }
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
     },
-    displayName: {
+    fullName: {
         fontWeight: 'bold',
         fontSize: 18,
     },

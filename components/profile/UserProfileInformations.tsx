@@ -11,7 +11,7 @@ const UserProfileInformations: React.FC<Props> = ({ user }) => {
     const { tint } = useColors()
     return (
         <View style={styles.container}>
-            <Text style={styles.displayName}>{user.displayName}</Text>
+            <Text style={styles.fullName}>{user.fullName}</Text>
             <View style={styles.emailContainer}>
                 <Entypo name="email" size={20} color={tint} />
                 <Text style={styles.email}>{user.email}</Text>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         zIndex: 20,
         gap: 10,
     },
-    displayName: {
+    fullName: {
         color: "white",
         fontSize: 34,
         fontWeight: "bold",
