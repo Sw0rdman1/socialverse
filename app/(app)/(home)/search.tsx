@@ -5,6 +5,7 @@ import SearchHeader from '@/components/search/SearchHeader';
 import { SetStateAction, useEffect, useState } from 'react';
 import { User } from '@/model/User';
 import SearchResult from '@/components/search/SearchResult';
+import SearchBanner from '@/components/search/SearchBanner';
 
 
 const users: SetStateAction<User[]> = []
@@ -25,8 +26,8 @@ export default function SearchScreen() {
   return (
     <View style={styles.container}>
       <SearchHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      {users.length === 0 && <SearchBanner />}
       <ScrollView style={styles.listContainer}>
-        {/* Search Results */}
         <View style={{ height: 120 }} />
         {searchResults.map((user) => (
           <SearchResult key={user.id} user={user} />
