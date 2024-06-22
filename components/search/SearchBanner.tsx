@@ -18,9 +18,9 @@ export default SearchBanner
 const styles = StyleSheet.create({
     container: {
         height: height,
+        paddingTop: 180,
         width: width,
         alignItems: 'center',
-        justifyContent: 'center',
         gap: 10,
     },
     text: {
