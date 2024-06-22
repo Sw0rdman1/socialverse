@@ -47,8 +47,6 @@ export class UserController {
     }
 
     
-
-
     public async getCurrentUserInformations(id: string): Promise<User> {
         const { data, error } = await this.supabase
             .from('users')
@@ -104,6 +102,24 @@ export class UserController {
             numberOfFollowing: Number(followingCount.count),
             numberOfPosts: Number(postCount.count)
         };
+    }
+
+    public async searchUsers(searchTerm: string): Promise<User[]> {
+        const { data, error } = await this.supabase
+            .from('users')
+            .select('*')
+            .ilike('username', `%${searchTerm}%`)
+            .limit(10);
+
+        console.log(data);
+        
+
+        if (error) {
+            console.log(error.message);
+            throw error;
+        }
+
+        return data.map((user: User) => snakeToCamel(user)) as User[];
     }
 
 
