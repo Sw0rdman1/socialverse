@@ -5,6 +5,7 @@ import { useColors } from '@/hooks/useColors';
 import SearchBanner from './SearchBanner';
 import SearchResult from './SearchResult';
 import Image from '../ui/Image';
+import { User } from '@/model/User';
 
 const Loading = () => {
     const { tint } = useColors();
@@ -28,15 +29,18 @@ const NoResultsFound = () => {
 
 interface SearchMainContentProps {
     searchTerm: string;
+    addToHistoryHandler: (user: User) => void;
+    deleteHistoryHandler: (id: string) => void;
+    searchHistory: User[];
 }
 
-const SearchMainContent: React.FC<SearchMainContentProps> = ({ searchTerm }) => {
+const SearchMainContent: React.FC<SearchMainContentProps> = ({ searchTerm, addToHistoryHandler, deleteHistoryHandler, searchHistory }) => {
     const { searchResults, loading } = useSearch(searchTerm);
 
     if (loading) return <Loading />;
 
     if (!loading && searchResults.length === 0) {
-        if (searchTerm.length === 0) return <SearchBanner />;
+        if (searchTerm.length === 0) return <SearchBanner searchHistory={searchHistory} handleDelete={deleteHistoryHandler} />;
         return <NoResultsFound />;
     };
 
@@ -44,7 +48,7 @@ const SearchMainContent: React.FC<SearchMainContentProps> = ({ searchTerm }) => 
         <ScrollView style={styles.listContainer}>
             <View style={{ height: 120 }} />
             {searchResults.map((user) => (
-                <SearchResult key={user.id} user={user} />
+                <SearchResult key={user.id} user={user} addToHistoryHandler={addToHistoryHandler} />
             ))}
         </ScrollView>
     )

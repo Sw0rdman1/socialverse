@@ -7,14 +7,16 @@ import { useColors } from '@/hooks/useColors';
 
 interface SearchResultProps {
     user: User;
+    addToHistoryHandler: (user: User) => void;
 }
 
-const SearchResult: React.FC<SearchResultProps> = ({ user }) => {
+const SearchResult: React.FC<SearchResultProps> = ({ user, addToHistoryHandler }) => {
     const router = useRouter();
     const { backgroundSecondary } = useColors();
 
     const handlePress = () => {
         router.push(`/user/${user.id}`)
+        addToHistoryHandler(user);
     }
 
     return (
