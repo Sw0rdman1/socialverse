@@ -9,6 +9,11 @@ export const useSearch = (searchTerm: string) => {
     const { users: usersController } = useApi();
 
     useEffect(() => {
+        if (!searchTerm) {
+            setLoading(false);
+            setSearchResults([]);
+            return;
+        }
         setLoading(true);
         const handler = setTimeout(() => {
             setDebouncedSearchTerm(searchTerm);

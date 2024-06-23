@@ -7,7 +7,8 @@ const { height, width } = Dimensions.get('window')
 const SearchBanner = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Type something to search</Text>
+            <Text style={styles.text}>Type something to find</Text>
+            <Text style={styles.text}>your friends</Text>
             <Image source={require('../../assets/images/search-banner.png')} style={styles.image} />
         </View>
     )
@@ -18,7 +19,7 @@ export default SearchBanner
 const styles = StyleSheet.create({
     container: {
         height: height,
-        paddingTop: 180,
+        paddingTop: 160,
         width: width,
         alignItems: 'center',
         gap: 10,
