@@ -5,6 +5,7 @@ import { LikeController } from './LikeController';
 import { BookamarkController } from './BookmarkController';
 import { CommentController } from './CommentsController';
 import { supabase } from '@/config/supabase';
+import { ImagesController } from './ImagesController';
 
 class GlobalController {
     private static instance: GlobalController;
@@ -15,6 +16,7 @@ class GlobalController {
     public likes: LikeController;
     public bookmarks: BookamarkController;
     public comments: CommentController;
+    public images: ImagesController;
 
 
     private constructor() {
@@ -26,6 +28,7 @@ class GlobalController {
         this.likes = new LikeController(this.supabase);
         this.bookmarks = new BookamarkController(this.supabase);
         this.comments = new CommentController(this.supabase);
+        this.images = new ImagesController(this.supabase);
     }
 
     public static getInstance(): GlobalController {

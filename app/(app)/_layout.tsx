@@ -29,6 +29,10 @@ export default function TabLayout() {
                 name="user/[userID]"
                 options={{ headerShown: false, presentation: 'modal' }}
             />
+            <Stack.Screen
+                name="newPost"
+                options={{ headerShown: false, presentation: 'modal' }}
+            />
         </Stack>
     );
 }
