@@ -1,7 +1,9 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import { User } from "@/model/User";
-import { snakeToCamel } from "@/utils/caseConverter";
+import { camelToSnake, snakeToCamel } from "@/utils/caseConverter";
 
+
+const ID_FROM_AUTH = '3d96adb2-dacb-4221-a5cf-ef7d98916512'
 export class UserController {
 
     private supabase: SupabaseClient;
@@ -158,6 +160,5 @@ export class UserController {
 
         return data.map((user: User) => snakeToCamel(user)) as User[];
     }
-
 
 }

@@ -109,9 +109,13 @@ export class PostController {
         } catch (error) {
             console.error('Error creating post:', (error as Error).message);
         }
-
-
     }
+
+    public async generateNewPost(): Promise<void> {
+        const newRandomPost = {
+            
+        }
+    }       
 
     // Update an existing post
     public async updatePost(): Promise<void> {

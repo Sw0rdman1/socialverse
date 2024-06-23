@@ -8,14 +8,12 @@ export const usePosts = () => {
     const [loading, setLoading] = useState(false)
     const [posts, setPosts] = useState<Post[]>([])
     const [total, setTotal] = useState(0)
-    const { posts: postController } = useApi()
+    const { posts: postController, users } = useApi()
 
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true)
             const posts = await postController.getAllPosts();
-            console.log(posts.data);
-
             setPosts(posts.data)
             setTotal(posts.total)
             setLoading(false)
