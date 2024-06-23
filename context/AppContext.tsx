@@ -130,7 +130,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
 export const useCurrentUser = () => {
     const context = useContext(AppContext);
-    if (!context) {
+    if (!context || !context.user) {
         throw new Error('useAppContext must be used within a AppProvider');
     }
     return context.user;

@@ -89,7 +89,7 @@ export class PostController {
     }
 
 
-    public async createPost(caption: string, imageURL: string, authorID: number): Promise<void> {
+    public async createPost(caption: string, imageURL: string, authorID: string): Promise<void> {
         try {
 
             let { data, error } = await this.supabase
@@ -97,8 +97,8 @@ export class PostController {
                 .insert({
                     created_at: new Date(),
                     caption: caption,
-                    imageUrl: imageURL,
-                    author: authorID,
+                    image_url: imageURL,
+                    author_id: authorID,
                 });
 
 

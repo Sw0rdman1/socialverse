@@ -15,7 +15,7 @@ const MyImagePicker: React.FC<ImagePickerProps> = ({ image, setImage, setImageUr
     const [loading, setLoading] = useState(false);
     const currentUser = useCurrentUser();
     const { images } = useApi();
-    const { tint } = useColors();
+    const { tint, backgroundTransparent } = useColors();
 
     if (currentUser === null) {
         return null;
@@ -32,7 +32,7 @@ const MyImagePicker: React.FC<ImagePickerProps> = ({ image, setImage, setImageUr
             setLoading(true);
             setImage(result.assets[0]);
             const imageUrl = await
-                images.uploadImage(result.assets[0], currentUser.id, "posts");
+                images.uploadImage(result.assets[0], currentUser.id, "post_images");
             setImageUrl(imageUrl);
             setLoading(false);
         }
@@ -66,7 +66,7 @@ const MyImagePicker: React.FC<ImagePickerProps> = ({ image, setImage, setImageUr
     }
 
     return (
-        <TouchableOpacity style={styles.button} onPress={pickImage}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: backgroundTransparent }]} onPress={pickImage}>
             {renderImage()}
         </TouchableOpacity>
     );
@@ -77,7 +77,7 @@ export default MyImagePicker;
 const styles = StyleSheet.create({
     button: {
         aspectRatio: 1,
-        width: "90%",
+        width: "85%",
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,

@@ -7,6 +7,7 @@ export default {
   light: {
     background: '#F2F2F7',
     backgroundSecondary: '#FFFFFF',
+    backgroundTransparent: '#FFFFFF40',
     text: '#333333',
     tint: tintColor,
     tintTransparent: tintTransparent,
@@ -18,6 +19,7 @@ export default {
   dark: {
     background: '#000000',
     backgroundSecondary: '#121212',
+    backgroundTransparent: '#12121240',
     text: '#D3D3D3',
     tint: tintColor,
     tintTransparent: tintTransparent,
