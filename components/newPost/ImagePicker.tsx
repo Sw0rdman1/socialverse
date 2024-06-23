@@ -15,7 +15,7 @@ const MyImagePicker: React.FC<ImagePickerProps> = ({ image, setImage, setImageUr
     const [loading, setLoading] = useState(false);
     const currentUser = useCurrentUser();
     const { images } = useApi();
-    const { text, tint } = useColors();
+    const { tint } = useColors();
 
     if (currentUser === null) {
         return null;
@@ -42,8 +42,8 @@ const MyImagePicker: React.FC<ImagePickerProps> = ({ image, setImage, setImageUr
         if (!image) {
             return (
                 <View style={styles.noPhotoContainer}>
-                    <Ionicons name="images" size={32} color={text} />
-                    <Text style={[styles.buttonText, { color: text }]}>Gallery</Text>
+                    <Ionicons name="images" size={32} color={"white"} />
+                    <Text style={[styles.buttonText, { color: "white" }]}>Gallery</Text>
                 </View>
             )
         }
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
+        backgroundColor: 'rgba(153, 157, 160, 0.15)',
     },
     buttonText: {
         fontSize: 22,

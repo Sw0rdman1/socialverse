@@ -3,18 +3,12 @@ import React from 'react'
 import { Text, View } from '@/components/ui/Themed'
 import Button from '@/components/ui/Button'
 import { useRouter } from 'expo-router'
+import NewPostForm from '@/components/newPost/NewPostForm'
 
 const NewPostScreen = () => {
-
-    const router = useRouter();
-
-    const handlePress = () => {
-        router.navigate('(home)')
-    }
-
     return (
         <View style={styles.container}>
-            <Button text="Create Post" onPress={handlePress} />
+            <NewPostForm />
         </View>
     )
 }
