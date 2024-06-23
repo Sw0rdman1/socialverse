@@ -3,6 +3,7 @@ import UserButtons from '@/components/profile/UserButtons';
 import UserFeed from '@/components/profile/UserFeed';
 import UserProfileHeader from '@/components/profile/UserProfileHeader';
 import AnimatedHeader from '@/components/ui/AnimatedHeader';
+import Loading from '@/components/ui/Loading';
 import { Text, View } from '@/components/ui/Themed';
 import { useUser } from '@/hooks/useUser';
 import { useLocalSearchParams } from 'expo-router';
@@ -11,13 +12,15 @@ import { Dimensions } from 'react-native';
 
 const { height } = Dimensions.get('window');
 
+
+
 const UserProfileScreen = () => {
     const { userID } = useLocalSearchParams<{ userID: string }>();
     const { user, userPosts, loading } = useUser(userID as string);
     const [isFollowing, setIsFollowing] = useState(user?.isFollowing || false)
 
     if (loading) {
-        return <Text>Loading...</Text>
+        return <Loading text='Lading user...' />
     }
 
     if (!user || !userPosts) {
