@@ -5,8 +5,8 @@ export interface User {
     username: string;
     fullName: string;
     avatarUrl: string;
-    numberOfFollowers?: number;
-    numberOfFollowing?: number;
-    numberOfPosts?: number;
-    isFollowing?: boolean;
+    numberOfFollowers: number;
+    numberOfFollowing: number;
+    numberOfPosts: number;
+    isFollowing: boolean;
 }

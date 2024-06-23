@@ -15,7 +15,7 @@ export class PostController {
             let { data: posts, error } = await this.supabase
                 .from('posts')
                 .select(`*,author:users!posts_author_id_fkey(*)`)                
-            .range((page - 1) * pageSize, page * pageSize - 1)
+                .range((page - 1) * pageSize, page * pageSize - 1)
                 .order('created_at', { ascending: false });
 
 

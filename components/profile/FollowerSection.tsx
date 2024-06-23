@@ -26,10 +26,6 @@ interface FollowerSectionProps {
 
 const FollowerSection: React.FC<FollowerSectionProps> = ({ user, isFollowing }) => {
 
-    if (!user.numberOfFollowers || !user.numberOfFollowing || !user.numberOfPosts) {
-        return null;
-    }
-
     return (
         <View style={styles.container}>
             <NumberContainer number={user.numberOfPosts} label="Posts" isFollowing={isFollowing} />
@@ -48,7 +44,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 25,
         gap: 25,
         height: 80,
-        marginVertical: 20,
+        marginVertical: 30,
     },
     item: {
         paddingVertical: 15,

@@ -47,7 +47,7 @@ export class UserController {
     }
 
     
-    public async getCurrentUserInformations(id: string): Promise<User> {
+    public async getUserByID(id: string): Promise<User> {
         const { data, error } = await this.supabase
             .from('users')
             .select('*')
@@ -59,15 +59,56 @@ export class UserController {
             throw error;
         }
 
-        return snakeToCamel(data) as User;
+        console.log(data);
+        
+
+        const { data: followerCount, error: followerError } = await this.supabase
+            .from('followers')
+            .select('*')
+            .eq('following_id', id)
+
+        if (followerError) {
+            console.log(followerError.message);
+            throw followerError;
+        }
+
+
+        const { data: followingCount, error: followingError } = await this.supabase
+            .from('followers')
+            .select('*')
+            .eq('follower_id', id)
+
+        if (followingError) {
+            console.log(followingError.message);
+            throw followingError;
+        }
+
+
+        const { data: postCount, error: postError } = await this.supabase
+            .from('posts')
+            .select('*')
+            .eq('author_id', id)
+
+        if (postError) {
+            console.log(postError.message);
+            throw postError;
+        }
+
+
+        return {
+            ...snakeToCamel(data),
+            numberOfFollowers: followerCount.length,
+            numberOfFollowing: followingCount.length,
+            numberOfPosts: postCount.length
+        };
     }
+
 
     public async getProfileInformations(user: User): Promise<User> {
         const { data: followerCount, error: followerError } = await this.supabase
             .from('followers')
-            .select('count(*)')
+            .select('*', { count: 'exact'})
             .eq('user_id', user.id)
-            .single();
 
         if (followerError) {
             console.log(followerError.message);
@@ -76,9 +117,8 @@ export class UserController {
 
         const { data: followingCount, error: followingError } = await this.supabase
             .from('following')
-            .select('count(*)')
+            .select('*', { count: 'exact'})
             .eq('user_id', user.id)
-            .single();
 
         if (followingError) {
             console.log(followingError.message);
@@ -89,7 +129,6 @@ export class UserController {
             .from('posts')
             .select('count(*)')
             .eq('user_id', user.id)
-            .single();
 
         if (postError) {
             console.log(postError.message);
@@ -98,9 +137,9 @@ export class UserController {
 
         return {
             ...user,
-            numberOfFollowers: Number(followerCount.count),
-            numberOfFollowing: Number(followingCount.count),
-            numberOfPosts: Number(postCount.count)
+            numberOfFollowers: Number(followerCount),
+            numberOfFollowing: Number(followingCount),
+            numberOfPosts: Number(postCount)
         };
     }
 
@@ -111,8 +150,6 @@ export class UserController {
             .ilike('username', `%${searchTerm}%`)
             .limit(10);
 
-        console.log(data);
-        
 
         if (error) {
             console.log(error.message);

@@ -10,6 +10,7 @@ interface Props {
 }
 
 const UserProfileHeader: React.FC<Props> = ({ user }) => {
+
     return (
         <View>
             <BackButton />

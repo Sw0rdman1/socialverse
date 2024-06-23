@@ -29,7 +29,7 @@ const UserProfileScreen = () => {
         <AnimatedHeader
             headerComponent={<UserProfileHeader user={user} />}
             minHeight={250}
-            maxHeight={height - 300}
+            maxHeight={height - 370}
         >
             <View style={{ flex: 1, height: isFollowing ? "auto" : 300 }}>
                 <FollowerSection user={user} isFollowing={false} />
