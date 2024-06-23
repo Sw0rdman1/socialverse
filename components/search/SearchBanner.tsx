@@ -32,7 +32,7 @@ const HistoryResult: React.FC<{ user: User, handleDelete: (id: string) => void }
                 </View>
             </View>
             <TouchableOpacity onPress={() => handleDelete(user.id)} style={styles.deleteButton}>
-                <AntDesign name="close" size={24} color={text} />
+                <AntDesign name="close" size={22} color={text} />
             </TouchableOpacity>
         </TouchableOpacity>
     )
@@ -59,8 +59,6 @@ const SearchBanner: React.FC<SearchBannerProps> = ({ searchHistory, handleDelete
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Type something to find</Text>
-            <Text style={styles.text}>your friends</Text>
             <Image source={require('../../assets/images/search-banner.png')} style={styles.image} />
         </View>
     )
@@ -81,14 +79,14 @@ const styles = StyleSheet.create({
         fontWeight: '600',
     },
     image: {
-        width: width - 60,
+        width: width - 30,
         aspectRatio: 1,
         borderRadius: 30,
     },
     historyContainer: {
         width: width,
         backgroundColor: 'transparent',
-        marginTop: 20,
+        marginTop: 10,
     },
     textContainer: {
         marginLeft: 15,

@@ -46,7 +46,7 @@ const SearchMainContent: React.FC<SearchMainContentProps> = ({ searchTerm, addTo
 
     return (
         <ScrollView style={styles.listContainer}>
-            <View style={{ height: 120 }} />
+            <View style={{ height: 125 }} />
             {searchResults.map((user) => (
                 <SearchResult key={user.id} user={user} addToHistoryHandler={addToHistoryHandler} />
             ))}
@@ -59,6 +59,7 @@ export default SearchMainContent
 const styles = StyleSheet.create({
     listContainer: {
         width: '100%',
+        paddingHorizontal: 10,
     },
     loadingContainer: {
         flex: 1,
@@ -77,7 +78,6 @@ const styles = StyleSheet.create({
     },
     noResultsTitle: {
         marginTop: 10,
-
         fontSize: 22,
         fontWeight: '700',
     },
