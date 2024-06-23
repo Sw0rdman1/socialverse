@@ -47,6 +47,26 @@ export class PostController {
 
     }
 
+    public async getPostsByUser(userID: string): Promise<Post[]> {
+        try {
+            let { data: posts, error } = await this.supabase
+                .from('posts')
+                .select(`*,author:users!posts_author_id_fkey(*)`)                
+                .eq('author_id', userID);
+
+            if (error) {
+                console.log('Error fetching posts:', error.message);
+                throw error;
+            }
+
+            return snakeToCamel(posts);
+
+        } catch (error) {
+            console.error('Error fetching posts:', (error as Error).message);
+            return [];
+        }
+    }
+
     public async getPostByID(id: string): Promise<Post | null> {
         try {
             let { data: posts, error } = await this.supabase

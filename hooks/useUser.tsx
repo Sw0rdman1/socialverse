@@ -7,7 +7,7 @@ export const useUser = (id: string) => {
     const [loading, setLoading] = useState(true)
     const [user, setUser] = useState<User | null>(null)
     const [userPosts, setUsersPosts] = useState<Post[]>([])
-    const { users: userController } = useApi()
+    const { users: userController, posts: postController } = useApi()
 
 
     useEffect(() => {
@@ -19,12 +19,13 @@ export const useUser = (id: string) => {
             setLoading(false)
         }
 
-        // const fetchUserPosts = async () => {
-        //     const posts = await userController.getUserPosts(id)
-        //     setUsersPosts(posts)
-        // }
+        const fetchUserPosts = async () => {
+            const posts = await postController.getPostsByUser(id)
+            setUsersPosts(posts)
+        }
 
         fetchUser()
+        fetchUserPosts()
 
     }, [])
 
