@@ -4,6 +4,7 @@ import { useColors } from '@/hooks/useColors'
 import { usePosts } from '@/hooks/usePosts'
 import { useEffect, useRef, useState } from 'react'
 import NumberOfNewPosts from './NumberOfNewPosts'
+import PostCreateLoader from '../newPost/PostCreateLoader'
 
 const TIME_TO_SHOW_NEW_POSTS = 60 * 1000 // 1 minute
 
@@ -47,7 +48,8 @@ const PostList = () => {
                 refreshControl={
                     <RefreshControl tintColor={tint} refreshing={loading} onRefresh={onRefreshHandler} />
                 }
-                ListFooterComponent={<View style={{ height: 20 }} />}
+                ListHeaderComponent={<PostCreateLoader />}
+                ListFooterComponent={<View style={{ height: 120 }} />}
             />
         </View>
     )

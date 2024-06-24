@@ -11,6 +11,8 @@ import Image from '../ui/Image'
 import CreatePostButton from './CreatePostButton'
 import CaptionInput from './CaptionInput'
 import { useApi, useCurrentUser } from '@/context/AppContext'
+import { usePostsContext } from '@/context/PostsContext'
+import Post from '@/model/Post'
 
 const NewPostForm = () => {
     const [caption, setCaption] = useState<string>("")
@@ -20,11 +22,14 @@ const NewPostForm = () => {
     const router = useRouter();
     const { posts } = useApi();
     const { id } = useCurrentUser();
+    const { setNewPost } = usePostsContext()
 
     const createPostHandler = async () => {
         await posts.createPost(caption, imageUrl, id)
         router.navigate('(home)')
 
+        const newPost = { imageUrl: imageUrl, caption: caption } as Post
+        setNewPost(newPost)
     }
 
     return (

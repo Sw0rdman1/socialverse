@@ -8,7 +8,7 @@ export const usePosts = () => {
     const [loading, setLoading] = useState(false)
     const [posts, setPosts] = useState<Post[]>([])
     const [total, setTotal] = useState(0)
-    const { posts: postController, users } = useApi()
+    const { posts: postController } = useApi()
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -21,6 +21,14 @@ export const usePosts = () => {
         fetchPosts()
     }, [])
 
+    const refreshPosts = async () => {
+        setLoading(true)
+        const posts = await postController.getAllPosts();
+        setPosts(posts.data)
+        setTotal(posts.total)
+        setLoading(false)
+    }
+
     const onRefresh = () => {
         setLoading(true)
         setTimeout(() => {
@@ -28,7 +36,7 @@ export const usePosts = () => {
     }
 
 
-    return { loading, posts, onRefresh, total }
+    return { loading, posts, onRefresh, total, refreshPosts }
 
 }
 

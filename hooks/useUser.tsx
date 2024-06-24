@@ -13,8 +13,6 @@ export const useUser = (id: string) => {
     useEffect(() => {
         const fetchUser = async () => {
             const user = await userController.getUserByID(id)
-            console.log(user as User);
-
             setUser(user as User)
             setLoading(false)
         }
