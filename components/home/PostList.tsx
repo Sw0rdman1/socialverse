@@ -11,7 +11,7 @@ const TIME_TO_SHOW_NEW_POSTS = 60 * 1000 // 1 minute
 const PostList = () => {
     const { tint } = useColors()
     const flatListRef = useRef<FlatList>(null)
-    const { loading, posts, onRefresh } = usePosts()
+    const { loading, posts, onRefresh, refreshPosts } = usePosts()
     const [numberOfNewPosts, setNumberOfNewPosts] = useState(0);
 
     useEffect(() => {
@@ -33,6 +33,11 @@ const PostList = () => {
         onRefresh()
     }
 
+    const addNewPostHandler = async () => {
+        await refreshPosts()
+    }
+
+
 
     return (
         <View style={styles.container}>
@@ -48,7 +53,7 @@ const PostList = () => {
                 refreshControl={
                     <RefreshControl tintColor={tint} refreshing={loading} onRefresh={onRefreshHandler} />
                 }
-                ListHeaderComponent={<PostCreateLoader />}
+                ListHeaderComponent={<PostCreateLoader addNewPostHandler={addNewPostHandler} />}
                 ListFooterComponent={<View style={{ height: 120 }} />}
             />
         </View>

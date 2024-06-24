@@ -8,8 +8,8 @@ import { PostsProvider } from '@/context/PostsContext';
 
 
 export default function TabLayout() {
-    const { tint } = useColors();
     const { isLoading, session } = useAuth();
+
 
     if (isLoading) {
         return <Text>Loading...</Text>;

@@ -30,7 +30,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     const [session, setSession] = useState<Session | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
-
     const signOut = async () => {
         await supabase.auth.signOut();
     }
@@ -108,15 +107,15 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     useEffect(() => {
         const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
             setSession(session);
-
             if (session?.user) {
                 const { data } = await supabase.from('users').select('*').eq('id', session.user.id).single();
                 setUser(snakeToCamel(data));
+                setIsLoading(false);
                 router.replace('/');
             } else {
+                setIsLoading(false);
                 setUser(null);
             }
-            setIsLoading(false);
 
 
         });

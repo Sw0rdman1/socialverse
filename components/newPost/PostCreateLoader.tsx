@@ -4,13 +4,14 @@ import { Text, View } from '../ui/Themed'
 import { useEffect, useState } from 'react'
 import { useColors } from '@/hooks/useColors'
 import { Image } from 'expo-image'
-import { usePosts } from '@/hooks/usePosts'
 
-const PostCreateLoader = () => {
+interface PostCreateLoaderProps {
+    addNewPostHandler: () => Promise<void>
+}
+
+const PostCreateLoader: React.FC<PostCreateLoaderProps> = ({ addNewPostHandler }) => {
     const { newPost, setNewPost } = usePostsContext()
     const { tint, backgroundSecondary } = useColors()
-    const { refreshPosts } = usePosts()
-
     const [progress, setProgress] = useState(0)
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const PostCreateLoader = () => {
     useEffect(() => {
         const uploadPost = async () => {
             if (progress >= 100) {
-                await refreshPosts()
+                await addNewPostHandler()
                 setProgress(0)
                 setNewPost(null)
             }
