@@ -6,3 +6,8 @@ export const useColors = () => {
     const colors = Colors[colorScheme ?? 'light']
     return colors
 }
+
+export const isLightTheme = () => {
+    const colorScheme = useColorScheme();
+    return colorScheme === 'light'
+}
