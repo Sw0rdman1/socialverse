@@ -1,9 +1,9 @@
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import { Alert, StyleSheet } from 'react-native'
+import { useState } from 'react'
 import { supabase } from '@/config/supabase'
-import { fullNameInput, EmailInput, PasswordInput } from './InputFields'
+import { FullNameInput, EmailInput, PasswordInput, AuthButton } from './InputFields'
 import { router } from 'expo-router'
-import { AppleAuth } from './AppleAuth'
+import { Text, TouchableOpacity, View } from '../ui/Themed'
 
 const RegisterForm = () => {
     const [email, setEmail] = useState('')
@@ -28,8 +28,8 @@ const RegisterForm = () => {
         <View style={styles.formContainer}>
             <EmailInput value={email} setValue={setEmail} />
             <PasswordInput value={password} setValue={setPassword} />
-            <fullNameInput value={fullName} setValue={setfullName} />
-            {/* <Button text='Register' onPress={signUpWithEmail} /> */}
+            <FullNameInput value={fullName} setValue={setfullName} />
+            <AuthButton text='Register' onPress={signUpWithEmail} />
 
         </View>
     )
@@ -55,7 +55,7 @@ const LogInForm = () => {
         <View style={styles.formContainer}>
             <EmailInput value={email} setValue={setEmail} />
             <PasswordInput value={password} setValue={setPassword} />
-            {/* <Button text='Log In' onPress={signInWithEmail} /> */}
+            <AuthButton text='Log In' onPress={signInWithEmail} />
         </View>
     )
 }
@@ -71,7 +71,6 @@ const EmailAndPasswordAuth = () => {
                 <Text style={styles.changeFormText}>{isRegister ? 'Already have an account? Log In' : 'Don\'t have an account? Register'}</Text>
             </TouchableOpacity>
             <Text style={styles.orText}>or</Text>
-            <AppleAuth />
         </View>
     )
 }

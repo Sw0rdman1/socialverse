@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Text, TextInput, View } from '../ui/Themed';
+import { Text, TextInput, TouchableOpacity, View } from '../ui/Themed';
 import { useState } from 'react';
 import Entypo from '@expo/vector-icons/Entypo';
 import { useColors } from '@/hooks/useColors';
@@ -7,6 +7,7 @@ import { useColors } from '@/hooks/useColors';
 interface InputFieldsProps {
     value: string;
     setValue: (value: string) => void;
+    password?: boolean;
 }
 
 const EmailInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
@@ -44,7 +45,7 @@ const EmailInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
     )
 }
 
-const PasswordInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
+const PasswordInput: React.FC<InputFieldsProps> = ({ value, setValue, password }) => {
     const [error, setError] = useState<string | null>(null)
     const { tint } = useColors()
 
@@ -68,7 +69,6 @@ const PasswordInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
                     setValue(text)
                 }}
                 secureTextEntry={true}
-                keyboardType='visible-password'
                 onBlur={validatePassword}
             />
             <Text style={styles.error}>{error}</Text>
@@ -76,7 +76,7 @@ const PasswordInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
     )
 }
 
-const fullNameInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
+const FullNameInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
     const [error, setError] = useState<string | null>(null)
     const { tint } = useColors()
 
@@ -106,7 +106,22 @@ const fullNameInput: React.FC<InputFieldsProps> = ({ value, setValue }) => {
     )
 }
 
-export { EmailInput, PasswordInput, fullNameInput }
+interface AuthButtonProps {
+    text: string;
+    onPress: () => void;
+}
+
+const AuthButton: React.FC<AuthButtonProps> = ({ text, onPress }) => {
+    const { tint } = useColors()
+    return (
+        <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: tint }]}>
+            <Text style={styles.buttonText}>{text}</Text>
+        </TouchableOpacity>
+    )
+
+}
+
+export { EmailInput, PasswordInput, FullNameInput, AuthButton }
 
 const styles = StyleSheet.create({
     inputContainer: {
@@ -143,5 +158,17 @@ const styles = StyleSheet.create({
         top: 13,
         left: 10,
         zIndex: 100,
+    },
+    button: {
+        width: '100%',
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+    },
+    buttonText: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold',
     },
 })

@@ -1,7 +1,7 @@
 import FollowerSection from '@/components/profile/FollowerSection';
 import Image from '@/components/ui/Image'
-import { Text, View } from '@/components/ui/Themed'
-import { useCurrentUser } from '@/context/AppContext'
+import { Text, TouchableOpacity, View } from '@/components/ui/Themed'
+import { useAuth, useCurrentUser } from '@/context/AppContext'
 import { useColors } from '@/hooks/useColors';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions, StyleSheet } from 'react-native'
@@ -12,6 +12,7 @@ const { height, width } = Dimensions.get('window');
 const MyProfileScreen = () => {
     const currentUser = useCurrentUser()
     const { backgroundSecondary, tint } = useColors()
+    const { signOut } = useAuth()
 
     return (
         <View style={[styles.container, { backgroundColor: backgroundSecondary }]}>
@@ -26,6 +27,10 @@ const MyProfileScreen = () => {
                     </Text>
                 </View>
             </View>
+            <TouchableOpacity onPress={signOut} style={styles.logOutButton}>
+                <FontAwesome5 name="sign-out-alt" size={26} color={tint} />
+                <Text style={styles.logOutText}>Log out</Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -65,5 +70,20 @@ const styles = StyleSheet.create({
     username: {
         fontSize: 28,
         color: 'gray',
+    },
+    logOutButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+        padding: 10,
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        borderRadius: 10,
+    },
+    logOutText: {
+        fontSize: 20,
+        fontWeight: '600',
+        color: 'gray',
+        marginLeft: 10,
     },
 })
